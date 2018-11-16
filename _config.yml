@@ -32,7 +32,7 @@ author:
 # Build settings
 markdown: kramdown
 # theme: minima
-theme: jekyll-theme-hydeout
+# theme: jekyll-theme-hydeout
 remote_theme: fongandrew/hydeout
 plugins:
   - jekyll-feed
