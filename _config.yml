@@ -13,12 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: vobu's shouts
-description: a journey<br>
-  through the world of SAP.<br> 
-  and the medium web.<br>  
-  and the ocean.<br>
-  plus a little this and that.
+title: "@vobu"
+description: SAP.<br> 
+  the web.<br>  
+  the ocean.<br>
+  this and that.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://vobu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: vobu
