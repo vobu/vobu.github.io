@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SAP CF destinations demystified"
+title:  "SAP CP Cloud Foundry destinations demystified"
 date:   2018-11-21 21:40:00 +0100
 categories: SAPCP
 tags: SAPCP CloudFoundry nodejs
