@@ -43,7 +43,7 @@ There are 2 main blogs/tutorials out there that describe how to handle using `de
 - <https://blogs.sap.com/2018/10/16/call-sap-cloud-platform-cloud-foundry-destinations-from-your-node.js-application/ >  
   explains the concept of command line `cf` along with services, bindings and instances nicely, but also doesn't mention any proxying and is difficult to re-use
 
-**Spoiler alert** That's why I wrapped the entire process in a node module, `sap-cf-destination` (super alpha pre-release, yada yada).
+**Spoiler alert** That's why I wrapped the entire process in a [node module, `sap-cf-destination`](https://www.npmjs.com/package/sap-cf-destination) (super alpha pre-release, yada yada).
 
 I took the liberty and read throught the reference `Java` implementation at <https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/313b215066a8400db461b311e01bd99b.html> and ported it to a reusable `node` module in `JavaScript`.
 
