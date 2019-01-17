@@ -1,0 +1,343 @@
+<html>
+<head>
+    <script type="text/javascript" src="lib/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="lib/head.min.js"></script>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css">
+    <link rel="stylesheet" href="highlight/styles/darcula.css">
+    <!--<script type="text/javascript" src="plugin/highlight/highlight.js"></script>-->
+    <script type="text/javascript" src="highlight/highlight.pack.js"></script>
+    <style type="text/css">
+        .slide-number::before {
+            content: "(c) j&s-soft GmbH -  "
+        }
+
+        .reveal section img.m {
+            vertical-align: bottom;
+        }
+
+        table {
+            color: #657b83;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        ul.tiny, li.tiny {
+            font-size: small;
+        }
+
+        .reveal section img.nada {
+            box-shadow: none;
+        }
+
+        .reveal section img.nada.middle {
+            vertical-align: middle;
+        }
+
+        table.procon td {
+            border-bottom: none;
+        }
+
+        table.procon tr td:first-child {
+            border-right: 1px solid;
+        }
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3><i>EXPERIMENTS</i>&nbsp;&nbsp;&nbsp;with real-time image processing<br/>and Augmented Reality in UI5
+            </h3>
+            <p><img src="img/ui5-logo.png" class="m" height="25" width="30"/> UI5con@SAP 2017 - Volker Buzek</p>
+        </section>
+        <section>
+            <p><b>j&s-soft GmbH</b></p>
+            <p>SAP-Consultancy with focus technology & innovation</p>
+
+            <img src="img/js-soft.png" class="nada"/>
+        </section>
+        <section id="image-manipulation">
+            <section>
+                <h3>Image Manipulation (1)</h3>
+                <h4>Runtime, client-side, Promise-chain</h4>
+                <p><code>canvas</code> &rarr; <code>context</code> &rarr; <code>base64</code>-String</p>
+                <pre class="fragment"><code class="js" data-trim>Promise.resolve().then( function() {
+    return navigator.getPicture() // or whatever returns base64
+).then( function(sBase64) { // manipulate image data
+    return <mark>promisifiedAndManipulatedImage();</mark>
+}).then( function(sBase64Modified) { // set it to UI5 control
+    this.byId("idImage").setSrc(sBase64Modified);
+}).catch(function (oError) { // never forget -> debugging!
+    jQuery.sap.log.error(oError);
+})</code></pre>
+            </section>
+            <section>
+                <h3>Image Manipulation (2)</h3>
+                <h6>(shortened for brevity)</h6>
+                <pre><code class="js" data-trim>promisifiedAndManipulatedImage: function(sBase64) {
+    return new Promise(function (fnResolve, fnReject) {
+        // wrap img.onload as promise
+        var oImage = new Image();
+        oImage.src = sBase64;
+        oImage.onload = function () {
+            // draw image data to an (invisible) canvas
+            this.oContext.drawImage(this); // this.oCanvas needs to already live
+            // retrieve ready-to-manipulate pixels
+            var oImgData = this.oContext.getImageData();
+            // iterate over every pixel in the image
+            oImgData.data.map(function (data, i) {
+                // MANIPULATION HERE...
+            }
+            this.oContext.putImageData(oImgData);
+            // desired media-type and quality
+            fnResolve(this.oCanvas.toDataURL("image/png", 1.0));
+        }
+    // ... fnReject for oImage.onerror() etc.
+    });
+}</code></pre>
+            </section>
+        </section>
+        <section id="pattern-matching">
+            <section>
+                <h3>Pattern Matching</h3>
+                <p><b>Gaussian blur &rarr; Grayscale &rarr; FAST &rarr; BRIEF|ORB</b></p>
+                <ul>
+                    <li>Binary Robust Independent Elementary Features (BRIEF) - <code>tracking.js</code></li>
+                    <li>Oriented FAST and Rotated BRIEF (ORB) - <code>JSFeat</code></li>
+                    <li>Features from Accelerated Segment Test (FAST) - <code>tracking.js</code></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Pattern Matching</h3>
+                <h4>Pro | Con</h4>
+                <table class="procon">
+                    <tr>
+                        <td>scale invariant</td>
+                        <td>quality of matches</td>
+                    </tr>
+                    <tr>
+                        <td>rotation invariant</td>
+                        <td>multiple matches</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>reflections<br>mirrors<br>"shiny"</td>
+                    </tr>
+
+                </table>
+            </section>
+        </section>
+
+
+        <section id="Record">
+            <section id="Record-idea">
+                <h3>collecting items in locations</h3>
+                <p><i>idea</i>:<br/>
+                    reference object
+                </p>
+                <ul>
+                    <li class="fragment">match object in photo/live video</li>
+                    <li class="fragment">record geo coordinates</li>
+                    <li class="fragment">record time</li>
+                </ul>
+                <p class="fragment">&rarr; provide as push-based AR scenario</p>
+            </section>
+            <!--<section id="Record-geo">-->
+                <!--<h3>obtain geo coords</h3>-->
+                <!--<p><code>navigator.getCurrentPosition()</code></p>-->
+                <!--<p class="fragment"><code>navigator.watchPosition()</code></p>-->
+            <!--</section>-->
+            <section id="Record-AR-scenario">
+                <h3>push-based AR scenario</h3>
+                <p><code>navigator.watchPosition()</code></p>
+                <ul>
+                    <li class="fragment">select recorded <code>$timestamp</code><br/>(<i>bind time to <code>UI5</code>
+                        control</i>)
+                    </li>
+                    <li class="fragment"><code>onCoordUpdate</code>:<br/><code>$object</code> at <code>$lat+$long</code>?
+                    </li>
+                    <li class="fragment">(yes) blend <code>$object</code> into camera<br/>(<i>bind space to <code>UI5</code> control</i>)</i>
+                    </li>
+                </ul>
+
+            </section>
+        </section>
+
+        <section id="Find">
+            <section id="Find-issues-1">
+                <h3>many many many issues (1)</h3>
+                <p><code>navigator.</code></p>
+                <p class="fragment"><code>.*</code>&nbsp;&nbsp;&nbsp;&#x26A1;accuracy</p>
+                <aside class="notes">
+                    - accuracy varies by OS (iOS, Android)
+                    - accuracy varies by Hardware
+                    - native implementation different from navigator.* -> Google Maps
+                </aside>
+                <p class="fragment"><code>.getCurrentPosition</code>, <code>.watchPosition</code><br/>
+                    &#x2618; GPRS&nbsp;&nbsp;&nbsp;&#x2614; WLAN</p>
+                <p class="fragment"><code>.heading</code> flunky &rarr; &#x2614; VR <code>img</code> placement</p>
+            </section>
+            <section id="Find-issues-2">
+                <h3>many many many issues (2)</h3>
+                <p style="vertical-align: middle;"><img src="img/xyz.png" width="80" height="80" class="nada middle" /><img src="img/perspective.png" width="192" height="97" class="nada middle"/> </p>
+                <p class="fragment">web-based AR "framework"</p>
+            </section>
+        </section>
+        <section id="Show">
+            <section>
+                <h3>motion tracking, projecting</h3>
+                <p>track movement across devices and<br/>project target object</p>
+                <p class="fragment"><b>Desktop &larr;WebSocket&rarr; mobile</b></p>
+            </section>
+
+            <section id="Show-motion-tracking">
+                <h3>motion tracking</h3>
+                <p><b>Grayscale &rarr; Gaussian blur &rarr; Canny Edge &rarr; Lucas-Kanade</b></p>
+                <ul>
+                    <li><code>navigator.getUserMedia()</code></li>
+                    <li><code>requestAnimationFrame(fnProjection)</code></li>
+                    <li><code>fnProjection =~ oCanvas<br/>&nbsp;&nbsp;&nbsp;.getContext("2d")<br/>&nbsp;&nbsp;&nbsp;.putImageData()</code>
+                    </li>
+                </ul>
+            </section>
+            <section id="Show-websocket">
+                <h3>web socket image data transfer</h3>
+                <pre><code class="js" data-trim>// sender
+var oImgData = oCanvas.getContext("2d")
+                      .getImageData(0, 0, oCanvas.width, oCanvas.height);
+WebSocket.send(JSON.stringify({oImgData});
+// receiver
+var oImgData = JSON.parse(oControlEvent.<mark>getParameter("data")</mark>)
+                        .data;
+var oNewImageData = oContext.createImageData(oCanvas.width, oCanvas.height);
+_.map(oImgData, function (data, i) { // underscore helper
+    oNewImageData.data[i] = data;
+});
+oContext.putImageData(oNewImageData, 0, 0);
+                    </code></pre>
+                <p class="fragment">on mobile: websockets closed (at will?) on inactivity!</p>
+            </section>
+            <section id="Show-projecting">
+                <h3>projecting</h3>
+                <ul>
+                    <li><code>($canvas * 4).rotateClockWise()</code></li>
+                    <li>"bind" <code>$canvas</code> to <code>WebSocket.attachMessage</code></li>
+                    <li>craft hologram device helper thingie</li>
+                </ul>
+            </section>
+        </section>
+
+
+        <section id="summary">
+            <section>
+                <h1>Summary</h1>
+            </section>
+            <section>
+                <h3>Image manipulation (+ matching)</h3>
+                <ul>
+                    <li><code>canvas</code>, <code>context(2d)</code>, <code>base64</code>-handling</li>
+                    <li>seamless <code>UI5</code>-integration</li>
+                    <li>matching: it's all math</li>
+                    <li><code>UI5</code> & Promises: awesome</li>
+                </ul>
+                <p class="fragment">&rArr; rock-solid, production ready<br />(matching: not)</p>
+            </section>
+            <section>
+                <h3>Record + AR-ify time + space</h3>
+                <ul>
+                    <li>UI5 binding with time and space - cool</li>
+                    <li>HTTPS!!!</li>
+                    <li>all WebRTC (<code>navigator.getUserMedia</code>)<br />&#x2614;iOS <= 10, IE (!Edge)</li>
+                </ul>
+                <p class="fragment">&rArr; insufficient tooling, playground only</p>
+            </section>
+            <section>
+                <h3>Extending UX &rarr; mobile</h3>
+                <ul>
+                    <li>UI5 event-binding works with WebSockets</li>
+                    <li>rotate dynamic <code>canvas</code> &rarr; intermediate <code>Image</code></li>
+                    <li>sidestep <code>UI5</code>-lifecycle to avoid re-rendering issues</li>
+                </ul>
+                <p class="fragment">&rArr; gorgeous nonsense &#x263A;<br /> no idea where someone can take this &#x2604;</p>
+            </section>
+        </section>
+
+
+
+        <section data-background-image="img/hiring.png"
+                 data-background-size="256px 256px"
+                 data-background-position="top right"
+                id="Last">
+            <p class="left"><b>Volker Buzek</b><br>j&s-soft GmbH</p>
+            <p class="left">SAP Development Architect Mobility</p>
+            <p class="left">
+                <b>W:</b> <a href="http://www.js-soft.com">www.js-soft.com</a><br>
+                <b>T:</b> <a href="https://www.twitter.com/vobu">@vobu</a><br>
+                <b>E:</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a><br>
+                <b>M</b> <a href="tel:+49.151.649.622.50">+49.151.649.622.50</a>
+            </p>
+            <h6>Credits/Links</h6>
+            <ul class="tiny">
+                <li>icons - <a href="https://thenounproject.com">The Noun Project</a><br /></li>
+                <li><a href="https://github.com/Foat/computer-vision-for-the-web">Computer Vision for the Web, Foat Akhmadeev</a></li>
+                <li><a href="https://inspirit.github.io/jsfeat/">JSFeat</a>, <a href="https://trackingjs.com">tracking.js</a></li>
+                <li><a href="https://github.com/awe-media/awe.js">awe.js</a></li>
+            </ul>
+        </section>
+    </div>
+</div>
+<script>
+    $(document)
+        .ready(function () {
+            $("code")
+                .each(function () {
+                    $(this)
+                        .html($(this)
+                            .html()
+                            .trim());
+                });
+        });
+</script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+
+            // Interpret Markdown in <section> elements
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+//
+//            // Syntax highlight for <code> elements
+//            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            // Speaker notes
+            {src: 'plugin/notes/notes.js', async: true}
+        ],
+        progress: false,
+        slideNumber: true
+    });
+
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<html>
+<head>
+    <script type="text/javascript" src="lib/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="lib/head.min.js"></script>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css">
+    <link rel="stylesheet" href="highlight/styles/darcula.css">
+    <!--<script type="text/javascript" src="plugin/highlight/highlight.js"></script>-->
+    <script type="text/javascript" src="highlight/highlight.pack.js"></script>
+    <style type="text/css">
+        .slide-number::before {
+            content: "(c) j&s-soft GmbH -  "
+        }
+
+        .reveal section img.m {
+            vertical-align: bottom;
+        }
+
+        table {
+            color: #657b83;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .reveal section img.nada {
+            box-shadow: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>asynchronous code handling<br/>(and how to test that &#x1F601;)</h3>
+            <p><img src="img/ui5-logo.png" class="m" height="25" width="30"/> UI5con 2017 - Volker Buzek</p>
+        </section>
+        <section>
+            <p><b>j&s-soft GmbH</b></p>
+            <p>SAP-Consultancy with focus technology & innovation</p>
+
+            <img src="img/js-soft.png" class="nada" />
+        </section>
+        <section>
+            <h3>Big Pic</h3>
+
+            <img src="img/delta-t-1.png" class="nada"/></section>
+        <section>
+            <h3>Out there...</h3>
+            <pre><code class="js" data-trim>var oCurrencyModel = new sap.ui.model.json.JSONModel();
+oCurrencyModel.loadData(
+    "/some/API/endpoint",
+    null,
+    <mark>false</mark>
+);
+var sCurrency = oCurrencyModel.getData();</code></pre>
+            <pre><code class="js" data-trim contenteditable>$.ajax({
+    type: 'GET',
+    url: "/some/API/endpoint",
+    <mark>async: false</mark>
+})</code></pre>
+        </section>
+        <section>
+            <h3>CORS demysitifed</h3>
+            <p class="fragment"><img src="img/CORS_1-orig.png" height="19%"/></p>
+            <p class="fragment"><img src="img/CORS_2-orig.png" height="19%"/></p>
+            <p class="fragment"><img src="img/CORS_3-orig.png" height="19%"/></p>
+        </section>
+        <section>
+            <h3>Sequential</h3>
+            <pre><code class="js" data-trim>aCars.forEach(function (oCar) {
+   var oModel = new JSONModel();
+   oModel.loadData(
+       "/whatever/REST/endpoint",
+       null, // no addtl params
+       false // sync!
+   );
+   oCar.drive();
+}</code></pre>
+        </section>
+
+
+        <section>
+            <h3>Asynchronous (1)</h3>
+            <pre><code class="js" data-trim>var aRequestTimes = [], iCars = aCars.length;
+aCars.forEach(function(oCar, iIndex) {
+	var oModel = new JSONModel();
+
+	oModel.attachRequestCompleted(function() {
+		aRequestTimes.push(
+			this.getData().delay
+		);
+
+		if (iIndex == (iCars - 1)) {
+			_asyncFinished();
+		}
+	});
+
+	oModel.loadData("/whatever/REST/endpoint");
+});</code></pre>
+        </section>
+
+        <section>
+            <h3>Asynchronous (2)</h3>
+            <pre><code class="js" data-trim>function _asyncFinished() {
+	var iTotalDelay = aRequestTimes.reduce(function(iTotal, iDelay) {
+		return iTotal + iDelay;
+	});
+
+	aRequestTimes.map(function(iDelay, iIndex) {
+		aCars[iIndex].drive();
+	);
+}</code></pre>
+        </section>
+
+        <section>
+            <h3>Asynchronous - issue</h3>
+            <table>
+                <tr>
+                    <td>1</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>4</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+        <section>
+            <h3>Promises (1)</h3>
+            <p>wrap the original callback-based function</p>
+            <pre><code class="js">
+
+var oModel = new JSONModel();
+return new Promise(function(fnResolve, fnReject) {
+	oModel.attachRequestCompleted(function() {
+		fnResolve(this.getData()) //contains unique key
+	});
+	oModel.attachRequestFailed(function(oErr) {
+		fnReject(oErr);
+	});
+	oModel.loadData("/whatever/REST/endpoint");
+})</code></pre>
+        </section>
+
+        <section>
+            <h3>Promises (2)</h3>
+            <p>use wrapper in <code>Promise.all()</code></p>
+            <pre><code class="js">
+return Promise.all(
+	aCars.map(function(oCar) {
+		var oModel = new JSONModel();
+		return _promisifiedLoad(oModel, oCar.getColor());
+	})
+)
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Promises (3)</h3>
+            <p>trigger Promise-chain with <code>Promise.all()</code></p>
+            <pre><code class="js">
+_promiseAll()
+	.then(function(aResolvedCalls) {
+		aResolvedCalls.forEach(function(oResult) {
+			getCar(oResult.color).drive();
+		});
+		return true; // keep the chain going
+	})
+	.then(function() {
+		// do sth else and/or
+		// return a value to keep chain going
+	})
+	.catch(function(oErr) {
+		console.log(JSON.stringify(oErr));
+	})
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Promises (4)</h3>
+            <h4>Bonus: <code>Promise.race()</code></h4>
+            <pre><code class="js">
+Promise.race(
+	aCars.map(function(oCar) {
+		var oModel = new JSONModel();
+		return _promisifiedLoad(oModel, oCar.getColor());
+	})
+)
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Summary</h3>
+            <table>
+                <thead>
+                <th></th>
+                <th>Pro</th>
+                <th>Con</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><b>Sync</b></td>
+                    <td>sequential coding</td>
+                    <td>blocking</td>
+                </tr>
+                <tr>
+                    <td><b>Async</b></td>
+                    <td>non-blocking</td>
+                    <td>more dev effort,<br>difficult sequence handling</td>
+                </tr>
+                <tr>
+                    <td><b>Promises</b></td>
+                    <td>non-blocking,<br/>sequence handling</td>
+                    <td>hard to debug</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Testing Promises (1)</h3>
+            <p>test the chain definition</p>
+            <pre><code class="js">
+(typeof oPromise.then === "function"
+&& typeof oPromise.catch === "function")</code></pre>
+        </section>
+
+        <section>
+            <section>
+                <h3>Testing Promises (2)</h3>
+                <h4>test the behaviour</h4>
+                <p>defintion:</p>
+                <pre><code class="js">
+
+var oModel = new JSONModel();
+return new Promise(function(fnResolve, fnReject) {
+	oModel.attachRequestCompleted(function() {
+		fnResolve(this.getData()) //contains unique key
+	});
+	oModel.attachRequestFailed(function(oErr) {
+		fnReject(oErr);
+	});
+    <mark>oModel.loadData("/whatever/REST/endpoint");</mark>
+})</code></pre>
+            </section>
+            <section>
+                <h4>force resolving</h4>
+                <pre><code class="js">
+sinon.stub(oModel, "loadData", function () {
+    oModel.fireRequestCompleted()
+})
+// ...
+oPromise()
+    .then(function() {
+        assert.ok(true, "reached the .then-state");
+        oModel.loadData.restore();
+    })
+                </code></pre>
+            </section>
+            <section>
+                <h4>force rejection</h4>
+                <pre><code class="js">
+sinon.stub(oModel, "loadData", function () {
+    oModel.fireRequestFailed()
+})
+// ...
+oPromise()
+    .catch(function() {
+        assert.ok(true, "reached the .catch-state");
+        oModel.loadData.restore();
+    })
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Testing Promises (3)</h3>
+                <h4>test the Promise-chain</h4>
+                <p>assumption:</p>
+                <pre><code class="js">
+var oPromiseContainer = {
+	initPromiseChain: function() {
+		return oPromise;
+	}
+}
+                </code></pre>
+            </section>
+            <section>
+                <h4>step the Promise chain</h4>
+                <pre><code class="js">
+var sMsg = "resolved Promise!";
+sinon.stub(oPromiseContainer, "initPromiseChain")
+	.returns(Promise.resolve(sMsg));
+// ...
+oPromiseContainer.initPromiseChain()
+	.then(function(oResponse) {
+		assert.strictEqual(oResponse, sMsg, "Promise resolved correctly!");
+		oPromiseContainer.initPromiseChain.restore();
+	});
+                </code></pre>
+            </section>
+            <section>
+                <h4>break the Promise chain</h4>
+                <pre><code class="js">
+var oError = new Error("meeeh :(");
+sinon.stub(oPromiseContainer, "initPromiseChain")
+	.returns(Promise.reject(oError));
+// ...
+oPromiseContainer.initPromiseChain()
+	.catch(function(oPromiseErr) {
+		assert.strictEqual(oError, oPromiseErr, "Promise rejected correctly!");
+		that.oPromiseContainer.initPromiseChain.restore();
+	});
+                </code></pre>
+            </section>
+        </section>
+        <section data-background-image="img/hiring.png"
+        data-background-size="256px 256px"
+        data-background-position="top right">
+            <p class="left"><b>Volker Buzek</b><br>j&s-soft GmbH</p>
+            <p class="left">SAP Development Architect Mobility</p>
+            <p class="left">
+                <b>W:</b> <a href="http://www.js-soft.com">www.js-soft.com</a><br>
+                <b>T:</b> <a href="https://www.twitter.com/vobu">@vobu</a><br>
+                <b>E:</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a><br>
+                <b>M</b> <a href="tel:+49.151.649.622.50">+49.151.649.622.50</a>
+            </p>
+        </section>
+    </div>
+</div>
+<script>
+    $(document)
+        .ready(function () {
+            $("code")
+                .each(function () {
+                    $(this)
+                        .html($(this)
+                            .html()
+                            .trim());
+                });
+        });
+</script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+
+            // Interpret Markdown in <section> elements
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+//
+//            // Syntax highlight for <code> elements
+//            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            {src: 'plugin/zoom-js/zoom.js', async: true}
+        ],
+        progress: false,
+        slideNumber: true
+    });
+
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

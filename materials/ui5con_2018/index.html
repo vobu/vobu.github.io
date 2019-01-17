@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>UI5con 2018</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+        <section>
+            <h3><span class="noUpper">TBaaS</span> - Testing and Building as a Service</h3>
+            <p><img src="img/phoenix_blue_tiny.png" class="m" height="60" width="60"/> UI5con 2018 - Volker Buzek</p>
+        </section>
+        <section>
+            <h2 class="left">/me</h2>
+            <ul class="no-bullets">
+                <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
+                <li><a href="https://www.npmjs.com/package/ui5-codecompletion">ui5-codecompletion</a></li>
+                <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
+                <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+                <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2><span class="noUpper">TBaaS</span> ... ?!</h2>
+            <p class="fragment">['tapas]</p>
+            <p><span class="fragment">️🚓 🚒</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fragment">🏛</span> <span
+                    class="fragment">&rarr; 📑</span></p>
+            <img class="subtle fragment" src="img/sap-testing-strategy.png" width="50%" height="50%"/>
+            <p class="fragment">
+                <span class="differentBold">T</span>esting and <span class="differentBold">B</span>uilding
+                <span class="differentBold">a</span> <span class="differentBold">a</span>
+                3-fold <span class="differentBold">S</span>ervice</li>
+            </p>
+
+            <aside class="notes">
+                - move into projects as "SWAT" -> UI5 perspective: provide proof and documentation that our expert level
+                changes work
+                - cross-platform scenarios: no one wants to carry cross-platform HW equipment
+                - who likes exploratory testing anyway?!?
+
+            </aside>
+        </section>
+        <section>
+            <h2>Continuous Integration</h2>
+            <img src="img/CI.png" class="nada" width="25%" height="25%">
+        </section>
+        <section>
+            <h3>&#9312; <span class="noUpper">TBaaS</span> for the developer</h3>
+            <p style="margin-bottom: -50px;">👨‍💻</p>
+            <img src="img/CI-developer.png" width="20%" height="20%" class="nada">
+            <aside class="notes">
+                move a subset of CI capabilites to the developer
+            </aside>
+        </section>
+        <section>
+            <h3>&#9312; <span class="noUpper">TBaaS</span> for the developer</h3>
+            <img src="img/TBaaS-tech-stack-developer.png" width="60%" height="60%" class="nada" style="margin-left:3em;">
+        </section>
+        <section>
+            <h3>&#9312; <span class="noUpper">TBaaS</span> for the developer</h3>
+            <h4>Pro | Con</h4>
+            <table class="procon">
+                <tr>
+                    <td class="fragment" data-fragment-index="1">time saver</td>
+                    <td class="fragment" data-fragment-index="10"> 💻 ⌨️</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="2">error prevention</td>
+                    <td class="fragment" data-fragment-index="12">component zoo</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="3">🤙🏻 code style (prefixes!)</td>
+                    <td class="fragment" data-fragment-index="12"></td>
+                </tr>
+            </table>
+            <aside class="notes">
+               - time saver: both for Jenkins run & save on exploratory testing 
+            </aside>
+        </section>
+        <section>
+            <h3>&#9313; <span class="noUpper">TBaaS</span> for the server</h3>
+            <img src="img/TBaaS-tech-stack-server.png" class="nada" style="margin-left: 3.5em;">
+            <aside class="notes">
+                - desktop multiplier -> +cross-platform
+                - +app builds
+                - +CD
+                - +Dashboard
+            </aside>
+        </section>
+        <section>
+            <h3>&#9313; <span class="noUpper">TBaaS</span> for the server</h3>
+            <p class="fragment"><img src="img/TBaaS-node-setup.png" class="subtle" width="60%" height="60%"></p>
+            <p>UI5 &rarr; <img src="img/ui5-browser-support.png" class="m" height="30%" width="30%"></p>
+        </section>
+        <section>
+            <h3>&#9313; <span class="noUpper">TBaaS</span> for the server (CI)</h3>
+            <h4>Pro | Con</h4>
+            <table class="procon">
+                <tr>
+                    <td class="fragment" data-fragment-index="1">cross-platform<br>error prevention</td>
+                    <td class="fragment" data-fragment-index="10">false positives</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="2">🤙🏻 test against different UI5 versions</td>
+                    <td class="fragment" data-fragment-index="11"><code>karma-*</code>-launcher stability</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="3">🤙🏻 test against<br>production|staging sources</td>
+                    <td class="fragment" data-fragment-index="12"><code>jenkins-node</code> stability</td>
+                </tr>
+                <tr>
+                    <td class="fragment"></td>
+                    <td class="fragment" data-fragment-index="13">component zoo</td>
+                </tr>
+                <tr>
+                    <td class="fragment"></td>
+                    <td class="fragment" data-fragment-index="14">infrastructure maintenance</td>
+                </tr>
+            </table>
+            <aside class="notes">
+                - zoo and stablility meh require a solid monitoring concept
+            </aside>
+        </section>
+        <section>
+            <h3>&#9313; <span class="noUpper">TBaaS</span> for the server (CD)</h3>
+            <h4>Pro | Con</h4>
+            <table class="procon">
+                <tr>
+                    <td class="fragment" data-fragment-index="1">build effort</td>
+                    <td class="fragment" data-fragment-index="10"></td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="2">🤙🏻 .app version == build version</td>
+                    <td class="fragment" data-fragment-index="11"></td>
+            </table>
+            <aside class="notes">
+                - zoo and stablility meh require a solid monitoring concept
+            </aside>
+        </section>
+        <section>
+            <h3>&#9314; <span class="noUpper">TBaaS</span> for new projects</h3>
+            <p><img src="img/TBaaS-integrate-app.png" class="nada" width="75%" height="75%"></p>
+        </section>
+        <section>
+            <h3>&#9314; <span class="noUpper">TBaaS</span> for new projects</h3>
+            <h4>Pro | Con</h4>
+            <table class="procon">
+                <tr>
+                    <td class="fragment" data-fragment-index="1">&raquo;One Stop Shop&laquo;</td>
+                    <td class="fragment" data-fragment-index="10">one-time setup effort</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="2">one-time setup effort only</td>
+                    <td class="fragment" data-fragment-index="11"></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2>some numbers</h2>
+            <ul>
+                <li>took us 2+ years part-time</li>
+                <li class="fragment">developer
+                    <ul>
+                        <li><code>n</code> <i>minutes</i> vs <code>4 $devs * 2</code> <i>days</i></li>
+                        <li class="fragment">"exploratory testing" savings ~50%</li>
+                    </ul>
+                </li>
+                <li class="fragment">server: €€€ ~ et al
+                    <ul>
+                        <li class="fragment">saucelabs (enterprise): ~24.000€/year</li>
+                        <li class="fragment">SCP msfDaO, CE: €3000/month</li>
+                    </ul>
+                </li>
+                <li class="fragment">new projects: &raquo;One Stop Shop&laquo;</li>
+            </ul>
+            <aside class="notes">
+                SCP mobile services for Development and Operation, Consumer Edition
+            </aside>
+        </section>
+        <section>
+            <h2><span class="noUpper">TBaaS</span> for <strike>new projects</strike> you 👋</h2>
+            <p class="fragment">as of now:</p>
+            <ul class="left">
+                <li class="fragment">offered as a subscription- and on-demand-service</li>
+                <li class="fragment">open for a limited number of ramp-up customers</li>
+                <li class="fragment">how?
+                    <ol>
+                        <li class="fragment">Setup/Onboarding</li>
+                        <li class="fragment">Choice of TBaaS modules</li>
+                        <li class="fragment">😀 🙌</li>
+                    </ol>
+                </li>
+            </ul>
+            <p class="fragment"><a href="https://www.js-soft.com/en/tbaas">https://www.js-soft.com/en/tbaas</a></p>
+            <aside class="notes">
+                TBaaS for the server: mention prices also for SCPms
+
+                benefits
+                - no responsibility, but immediate benefits (plug n play)
+                - don't have to fork out the dough: check out pricing on the website
+                - one stop shop: no scattering across multiple services
+                - not meant as a race or competition;
+                but: we care about the UI5 community: make UI5 apps more robust but utilizing testing galore
+                - plus of course: you get "certified by j&s"
+            </aside>
+        </section>
+        <!--<section>-->
+            <!--<h3><span class="noUpper">TBaaS</span> - Testing an Building as a service</h3>-->
+            <!--<p>img mit 3 Säulen: dev - server - you|new projects</p>-->
+        <!--</section>-->
+    </div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                    return !document.body.classList;
+                }
+            },
+
+            // Interpret Markdown in <section> elements
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+
+            // Syntax highlight for <code> elements
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+
+            // Zoom in and out with Alt+click
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+
+            // Speaker notes
+            {src: 'plugin/notes/notes.js', async: true},
+
+            // MathJax
+            {src: 'plugin/math/math.js', async: true}
+        ],
+        progress: false,
+        slideNumber: true,
+        history: true
+    });
+
+    // hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
