@@ -1,6 +1,7 @@
 ---
 layout: page
-title: materials
+title: presentations + talks
+permalink: 'materials.html'
 sidebar_link: true
 ---
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
