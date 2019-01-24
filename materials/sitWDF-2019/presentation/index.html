@@ -37,7 +37,7 @@
 
         <section>
             <h2>Scope</h2>
-            <ul>
+            <ul class="no-bullets">
                 <li>Node.JS</li>
                 <li class="fragment">⚡️ <code>@sap/approuter</code></li>
                 <li class="fragment">⚡️ WebIDE</li>
@@ -52,7 +52,7 @@
 
         <section>
             <h2>Architecture Seen (1)</h2>
-            <p>app-router based</p>
+            <p>TODO: app-router based</p>
         </section>
 
         <section>
@@ -73,8 +73,27 @@
                 <li class="fragment">use token for querying a specific destination from <code>destination</code> instance</li>
                 <li class="fragment">retrieve token from <code>xsuaa</code> instance for using the reverse proxy (aka
                     <code>connectivity</code> instance)</li>
-                <li class="fragment">use token for querying some <code>uri</code> in the destination</uri>
+                <li class="fragment">use token for querying some <code>uri</code> in the destination</li>
             </ol>
+            <p class="fragment">&rArr; <a href="https://www.npmjs.com/package/sap-cf-destination">sap-cf-destination</a></p>
+        </section>
+        <section>
+            <h2>under the hood <img class="m" src="img/arch-here.png" width="40%"/></h2>
+            <pre><code class="js">  callDestination({
+        url: '/api/json',
+        connectivity_instance: 'connectivity-inst',
+        uaa_instance: 'uaa-inst',
+        destination_instance: 'destination-inst',
+        destination_name: 'API',
+        http_verb: 'GET'
+    })
+    .then(response => {
+        // do sth clever w/ the response
+        // of $on-prem_behind_destination_'API'/api/json
+    })
+    .catch(err => {
+        // oh no 💩
+    })</code></pre>
         </section>
         <section>
             <h2>highlights (excerpt)</h2>
