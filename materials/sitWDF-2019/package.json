@@ -1,0 +1,19 @@
+{
+  "name": "sitwdf-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "NODE_ENV=development node --inspect index.js"
+  },
+  "author": "Volker Buzek <volker.buzek@js-soft.com>",
+  "license": "WTFPL",
+  "dependencies": {
+    "express": "^4.16.4",
+    "sap-cf-destination": "0.0.2-alpha.5"
+  },
+  "engines": {
+    "node": "10.10.x"
+  }
+}

@@ -1,0 +1,9 @@
+applications:
+- name: sitwdf-demo
+  memory: 256M
+  buildpacks:
+    - nodejs_buildpack
+  services:
+    - xsuaa-instance
+    - connectivity-instance
+    - destination-instance

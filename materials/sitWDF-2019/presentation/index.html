@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" xmlns:a="http://www.w3.org/1999/html">
+<head>
+    <title>sitWDF 2019</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="custom.css">
+    <style type="text/css">
+
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+        <section>
+            <h1>Cloud Foundry dev w/ on-premise data</h1>
+            <p>sitWDF 2019 - Volker Buzek</p>
+        </section>
+
+        <section>
+            <h2>Scope</h2>
+            <ul>
+                <li>Node.JS</li>
+                <li class="fragment">⚡️ <code>@sap/approuter</code></li>
+                <li class="fragment">⚡️ WebIDE</li>
+
+            </ul>
+            <aside class="notes">
+                - overhead of app router config
+                - app router doesn't hide configured microservices, they're still directly accessible
+                - different auth scheme (not JWT, but API Key)
+            </aside>
+        </section>
+
+        <section>
+            <h2>Architecture Seen (1)</h2>
+            <p>app-router based</p>
+        </section>
+
+        <section>
+            <h2>Architecture Seen (2)</h2>
+            <p><img class="subtleWhite" src="img/arch-seen.png" height="350"/></p>
+        </section>
+
+        <section>
+            <h2>Architecture Here</h2>
+            <p><img class="subtleWhite" src="img/arch-here.png"/></p>
+        </section>
+
+        <section>
+            <h2>under the hood <img class="m" src="img/arch-here.png" width="40%"/></h2>
+            <ol>
+                <li class="fragment">retrieve token from <code>xsuaa</code> instance for using the <code>destination</code> instance</li>
+                
+                <li class="fragment">use token for querying a specific destination from <code>destination</code> instance</li>
+                <li class="fragment">retrieve token from <code>xsuaa</code> instance for using the reverse proxy (aka
+                    <code>connectivity</code> instance)</li>
+                <li class="fragment">use token for querying some <code>uri</code> in the destination</uri>
+            </ol>
+        </section>
+        <section>
+            <h2>highlights (excerpt)</h2>
+            <h3>debugging</h3>
+            <pre><code class="bash"># enable ssh
+cf enable-ssh &lt;app&gt;
+
+# ssh tunnel
+cf ssh -N -T -L 9229:127.0.0.1:9229 &lt;app&gt;
+
+# node --inspect!
+&lt;node-debugger&gt; attach localhost:9229
+
+# repeat 2 + 3 after cf push...meh</code></pre>
+        </section>
+        <section>
+            <h2>highlights (excerpt)</h2>
+            <h4>POST, <code>201</code> + <code>content-length</code></h4>
+            <p><img class="m" src="img/arch-here.png" /></p>
+        </section>
+        <section>
+            <table class="procon">
+                <thead>
+                <tr>
+                    <td>👍🏻</td>
+                    <td>👎🏻</td>
+                    <td>🤔</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="fragment" data-fragment-index="10">performance/<br>latency</td>
+                    
+                    <td class="fragment" data-fragment-index="50">monitoring</td>
+                    <td class="fragment" data-fragment-index="100">fragmentation &rarr; maintenance</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="15">scaling</td>
+                    <td class="fragment" data-fragment-index="60">debugging</td>
+                    <td class="fragment" data-fragment-index="110">CC: subaccount UX</td>
+                </tr>
+                <tr>
+                    <td class="fragment" data-fragment-index="20">re-usable <code>npm module</code></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </section>
+
+
+        <section>
+            <h2 class="left">/me</h2>
+            <ul class="no-bullets">
+                <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
+                <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
+                <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+                <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
+            </ul>
+        </section>
+
+    </div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                    return !document.body.classList;
+                }
+            },
+
+            // Interpret Markdown in <section> elements
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+
+            // Syntax highlight for <code> elements
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+
+            // Zoom in and out with Alt+click
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+
+            // Speaker notes
+            {src: 'plugin/notes/notes.js', async: true},
+
+            // MathJax
+            {src: 'plugin/math/math.js', async: true}
+        ],
+        progress: false,
+        slideNumber: true,
+        history: true
+    });
+
+    // hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
