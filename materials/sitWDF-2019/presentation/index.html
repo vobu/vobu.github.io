@@ -38,9 +38,9 @@
         <section>
             <h2>Scope</h2>
             <ul class="no-bullets">
-                <li>Node.JS</li>
-                <li class="fragment">⚡️ <code>@sap/approuter</code></li>
-                <li class="fragment">⚡️ WebIDE</li>
+                <li class="center">Node.JS-based API exposing on-prem data</li>
+                <li class="fragment center">⚡️ <code>@sap/approuter</code></li>
+                <li class="fragment center">⚡️ WebIDE</li>
 
             </ul>
             <aside class="notes">
@@ -52,12 +52,20 @@
 
         <section>
             <h2>Architecture Seen (1)</h2>
-            <p>TODO: app-router based</p>
+            <p><img class="subtleWhite" src="img/arch-seen-router.png" height="350"/></p>
         </section>
 
         <section>
-            <h2>Architecture Seen (2)</h2>
-            <p><img class="subtleWhite" src="img/arch-seen.png" height="350"/></p>
+            <section>
+                <h2>Architecture Seen (2)</h2>
+                <p><img class="subtleWhite" src="img/arch-seen.png" height="350"/></p>
+            </section>
+            <section>
+                <h3>CORS demysitifed</h3>
+                <p class="fragment"><img class="subtleWhite1" src="img/CORS_1-orig.png" height="130"/></p>
+                <p class="fragment"><img class="subtleWhite1" src="img/CORS_2-orig.png" height="130"/></p>
+                <p class="fragment"><img class="subtleWhite1" src="img/CORS_3-orig.png" height="130"/></p>
+            </section>
         </section>
 
         <section>
@@ -68,14 +76,20 @@
         <section>
             <h2>under the hood <img class="m" src="img/arch-here.png" width="40%"/></h2>
             <ol>
-                <li class="fragment">retrieve token from <code>xsuaa</code> instance for using the <code>destination</code> instance</li>
-                
-                <li class="fragment">use token for querying a specific destination from <code>destination</code> instance</li>
+                <li class="fragment">retrieve token from <code>xsuaa</code> instance for using the
+                    <code>destination</code> instance
+                </li>
+
+                <li class="fragment">use token for querying a specific destination from <code>destination</code>
+                    instance
+                </li>
                 <li class="fragment">retrieve token from <code>xsuaa</code> instance for using the reverse proxy (aka
-                    <code>connectivity</code> instance)</li>
+                    <code>connectivity</code> instance)
+                </li>
                 <li class="fragment">use token for querying some <code>uri</code> in the destination</li>
             </ol>
-            <p class="fragment">&rArr; <a href="https://www.npmjs.com/package/sap-cf-destination">sap-cf-destination</a></p>
+            <p class="fragment">&rArr; <a href="https://www.npmjs.com/package/sap-cf-destination">sap-cf-destination</a>
+            </p>
         </section>
         <section>
             <h2>under the hood <img class="m" src="img/arch-here.png" width="40%"/></h2>
@@ -112,7 +126,7 @@ cf ssh -N -T -L 9229:127.0.0.1:9229 &lt;app&gt;
         <section>
             <h2>highlights (excerpt)</h2>
             <h4>POST, <code>201</code> + <code>content-length</code></h4>
-            <p><img class="m" src="img/arch-here.png" /></p>
+            <p><img class="m" src="img/arch-here.png"/></p>
         </section>
         <section>
             <table class="procon">
@@ -126,7 +140,7 @@ cf ssh -N -T -L 9229:127.0.0.1:9229 &lt;app&gt;
                 <tbody>
                 <tr>
                     <td class="fragment" data-fragment-index="10">performance/<br>latency</td>
-                    
+
                     <td class="fragment" data-fragment-index="50">monitoring</td>
                     <td class="fragment" data-fragment-index="100">fragmentation &rarr; maintenance</td>
                 </tr>
