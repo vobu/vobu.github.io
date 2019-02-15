@@ -6,6 +6,7 @@ sidebar_link: true
 ---
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Feb 2019: 🖥 DSAG Technologietage 2019: ["UI5 Entwicklung auf SAP CP (cloud foundry) mit node.js-basierten Microservices und Einbindung in den Continuous Integration Zyklus"](/materials/2019-02-13.DSAGTT19-ui5-nodejs-cf-capm.pdf)
 - Jan 2019: 🖥 ["Cloud Foundry development w/ on-premise data"](/materials/sitWDF-2019/presentation/), SAP Inside Track WDF (sitWDF)
 - Nov 2018: 🖥 ["WebStorm for UI5 development"](/materials/dsag_ui_exp_2018/) at DSAG UI Expert meeting
 - Jun 2018: [UI5con](https://openui5.org/ui5con/material2018.html#track2): "TBaaS - Testing and Building as a Service"
