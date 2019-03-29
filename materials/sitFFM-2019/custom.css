@@ -33,6 +33,9 @@ table.procon td:nth-child(3) {
 table.procon td {
   border-bottom: none;
 }
+table.procon td.center {
+  text-align: center;
+}
 table.procon tr:nth-child(even) {
   color: #d3cdbb;
 }

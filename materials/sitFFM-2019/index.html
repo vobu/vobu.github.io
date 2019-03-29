@@ -47,7 +47,7 @@
             <li><code>npm i -g @ui5/uiveri5</code></li>
             <li class="fragment">protractor + selenium-webdriver</li>
             <li class="fragment">
-              <code>jasmine</code> + OPA5 (basic) <code>matchers</code>
+              jasmine + OPA5 (basic) matchers
             </li>
             <li class="fragment">
               <img src="img/phoenix_blue_tiny.png" class="nada m" />1.52.12+
@@ -60,11 +60,11 @@
           <h3>integration testing</h3>
           <ul class="no-bullets">
             <li><code>conf.js</code></li>
-            <li><code>&lt;testCase&gt;.spec.js</code></li>
-            <li>
+            <li class="fragment"><code>&lt;testCase&gt;.spec.js</code></li>
+            <li class="fragment">
               <pre>
                     <code class="js" data-trim>
-                        describe('testCase', () => {
+                        describe('&lt;testCase&gt;', () => {
                             // async Promises
                             it('should do sth', function () {
                                 // resolves auto-magically
@@ -144,11 +144,47 @@
         </section>
 
         <section>
-          <h2>OPA &LeftRightArrow; UIveri5</h2>
-          <table>
-              <tr><td>control handling</td><td>Authentication</td></tr>
-              <tr><td></td><td>(cross-browser)</td></tr>
-              <tr><td></td><td><b>f</b>it,<br /><b>f</b>describe</td></tr>
+          <h2>UIveri5 vs OPA</h2>
+          <table class="procon">
+            <thead>
+              <tr>
+                <td></td>
+                <td>UIveri5</td>
+                <td>OPA</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>authentication</td>
+                <td class="center">👍🏻</td>
+                <td class="center">👎🏻</td>
+              </tr>
+              <tr>
+                <td>control access</td>
+                <td class="center">🤔</td>
+                <td class="center">👍🏻</td>
+              </tr>
+              <tr>
+                <td>cross-browser</td>
+                <td class="center">👍🏻</td>
+                <td class="center">🤔</td>
+              </tr>
+              <tr>
+                <td>single out test</td>
+                <td class="center">👍🏻</td>
+                <td class="center">👎🏻</td>
+              </tr>
+              <tr>
+                <td>infrastructure invest</td>
+                <td class="center">👎🏻</td>
+                <td class="center">🤔</td>
+              </tr>
+              <tr>
+                <td>TTU 🛠📖⏱🙅‍♂️</td>
+                <td class="center">🤔</td>
+                <td class="center">🤔</td>
+              </tr>
+            </tbody>
           </table>
         </section>
 
