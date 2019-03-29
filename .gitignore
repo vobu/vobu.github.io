@@ -283,3 +283,6 @@ fabric.properties
 .idea/vcs.xml
 .idea/vobu.github.io.iml
 NOTE-TO-SELF.md
+
+.idea/
+.vscode
