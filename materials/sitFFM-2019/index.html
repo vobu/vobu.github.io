@@ -1,132 +1,239 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:a="http://www.w3.org/1999/html">
-<head>
+  <head>
     <title>sitWDF 2019</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/moon.css" id="theme" />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
-
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
 
     <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
+      <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="custom.css">
-    <style type="text/css">
-
-
-    </style>
-</head>
-<body>
-<div class="reveal">
-
-    <div class="slides">
+    <link rel="stylesheet" href="custom.css" />
+    <style type="text/css"></style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
         <section>
-            <h1>Testing with <code>UIveri5</code></h1>
-            <p>sitFFM 2019 - Volker Buzek</p>
+          <h1>Testing with <code>UIveri5</code></h1>
+          <p>sitFFM 2019 - Volker Buzek</p>
         </section>
 
         <section>
-            <h2>OPA</h2>
-            <!-- code here, der zeigt, dass alle in success testen und
-                nicht mittels eines matchers -->
+          <img src="img/test-pyramid.png" />
         </section>
 
         <section>
-            <h2><code>UIveri5</code></h2>
+          <h2>UI...what?</h2>
+          <ul class="no-bullets">
+            <li><code>UIveri5</code> (sp? pron?)</li>
+            <li><code>npm i -g @ui5/uiveri5</code></li>
+            <li class="fragment">protractor + selenium-webdriver</li>
+            <li class="fragment">
+              <code>jasmine</code> + OPA5 (basic) <code>matchers</code>
+            </li>
+            <li class="fragment">
+              <img src="img/phoenix_blue_tiny.png" class="nada m" />1.52.12+
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Setup</h2>
+          <h3>integration testing</h3>
+          <ul class="no-bullets">
+            <li><code>conf.js</code></li>
+            <li><code>&lt;testCase&gt;.spec.js</code></li>
+            <li>
+              <pre>
+                    <code class="js" data-trim>
+                        describe('testCase', () => {
+                            // async Promises
+                            it('should do sth', function () {
+                                // resolves auto-magically
+                                expect(sth).toBe(true);
+                            });
+                            it('should do sth else', function () {
+                                expect(sthElse).toBe(false);
+                            });
+                        });
+                    </code>
+                </pre>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h2>Setup</h2>
+            <h3>visual testing</h3>
             <ul class="no-bullets">
-                <li><code>conf.js</fileName></code></li>
-                <li class="fragment"><code>&lt;fileName == TestCase-Name&gt;.spec.js</fileName></code></li>
+              <li>⚡️<code>visual</code> profile</li>
+              <li class="fragment">
+                expects <code>test/visual/visual.suite.js</code>
+              </li>
+              <li class="fragment">
+                requires <code>module.exports = &lt;testCase&gt;.spec.js</code>
+              </li>
+              <li class="fragment">
+                provides + requires<br />
+                http://.../<b>test-resources/e2e/test/&lt;testCase&gt;.html</b>
+              </li>
             </ul>
+          </section>
         </section>
 
         <section>
-            <section>
-                <h2>⚡️ <code>visual</code> profile</h2>
-                <p>webapp/test/e2e/<b>/test/visual/visual.suite.js</b><br />
-                &larr; <code>module.exports = TodoApp.spec.js</code><br />
-                &rArr; expecting http://localhost:8080/<b>test-resources/e2e/test/TodoApp.html</b></p>
-            </section>
+          <h3>&rArr; pimp <code>integration</code> profile</h3>
+          <pre><code class="js" data-trim>
+                    browsers:[{
+                        browserName: (_chrome_|chromeMobileEmulation|chromeHeadless|firefox|ie|safari|edge),
+                        browserVersion: '*',
+                        platformName: (_windows_|mac|linux|android|ios|winphone),
+                        platformVersion: '*',
+                        platformResolution: 'WIDTHxHEIGHT',
+                        ui5.theme: (bluecrystal|_belize_|hcp),
+                        ui5.direction: (rtl|_ltr_),
+                        ui5.mode: (_cozy_|compact)
+                    }]
+                </code></pre>
+          <p>
+            ref image example:<br /><code
+              >/&lt;dir&gt;/images/&lt;testCase&gt;⏎<br />
+              /mac/1280x1024/chrome⏎<br />
+              /belize/ltr/cozy⏎<br />
+              /&lt;imgName&gt;.ref.png</code
+            >
+          </p>
+        </section>
+        <section>
+          <h3>&rArr; pimp <code>integration</code> profile</h3>
+          <pre><code class="js" data-trim>
+                        take: true, compare: true, update: true,
+                    
+                        storageProvider: {
+                            name: './image/localStorageProvider',
+                            refImagesRoot: './&lt;dir&gt;',
+                            actImagesRoot: './&lt;dir&gt;'
+                        },
+                        screenshotProvider: {
+                            name: './image/localScreenshotProvider', 
+                            screenshotSleep: 100
+                        },
+                        comparisonProvider: {
+                            name: './image/localComparisonProvider'
+                        }
+                </code></pre>
         </section>
 
         <section>
-            <h2>&rArr; pimp <code>integration</code> profile</h2>
-            <p><img class="subtleWhite" src="img/arch-here.png"/></p>
+          <h2>OPA &LeftRightArrow; UIveri5</h2>
+          <table>
+              <tr><td>control handling</td><td>Authentication</td></tr>
+              <tr><td></td><td>(cross-browser)</td></tr>
+              <tr><td></td><td><b>f</b>it,<br /><b>f</b>describe</td></tr>
+          </table>
         </section>
 
         <section>
-            <h2 class="left">/me</h2>
-            <ul class="no-bullets">
-                <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
-                <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
-                <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
-                <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
-                <li><b>Slides</b> 
-                    <ul class="no-bullets">
-                        <li><a href="https://vobu.github.io/materials/sitFFM-2019/presentation/">https://vobu.github.io/⏎</a></li>
-                        <li><a href="https://vobu.github.io/materials/sitFFM-2019/presentation/">materials/sitFFM-2019/presentation/</a></li>
-                    </ul>
+          <h2 class="left">/me</h2>
+          <ul class="no-bullets">
+            <li>
+              Development Architect Mobility @
+              <a href="https://www.js-soft.com">j&s-soft</a>
+            </li>
+            <li>
+              <b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a>
+            </li>
+            <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+            <li>
+              <b>Mail</b>
+              <a href="mailto:volker.buzek@js-soft.com"
+                >volker.buzek@js-soft.com</a
+              >
+            </li>
+            <li>
+              <b>Slides</b>
+              <ul class="no-bullets">
+                <li>
+                  <a href="https://vobu.github.io/materials/sitFFM-2019/"
+                    >https://vobu.github.io/materials/sitFFM-2019/</a
+                  >
                 </li>
-            </ul>
+              </ul>
+            </li>
+          </ul>
         </section>
-
+      </div>
     </div>
-</div>
-<script src="lib/js/head.min.js"></script>
-<script src="js/reveal.js"></script>
-<script>
-    Reveal.initialize({
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
         dependencies: [
-            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-            {
-                src: 'lib/js/classList.js', condition: function () {
-                    return !document.body.classList;
-                }
-            },
+          // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+          {
+            src: "lib/js/classList.js",
+            condition: function() {
+              return !document.body.classList;
+            }
+          },
 
-            // Interpret Markdown in <section> elements
-            {
-                src: 'plugin/markdown/marked.js', condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {
-                src: 'plugin/markdown/markdown.js', condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
+          // Interpret Markdown in <section> elements
+          {
+            src: "plugin/markdown/marked.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
+          {
+            src: "plugin/markdown/markdown.js",
+            condition: function() {
+              return !!document.querySelector("[data-markdown]");
+            }
+          },
 
-            // Syntax highlight for <code> elements
-            {
-                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
-                    hljs.initHighlightingOnLoad();
-                }
-            },
+          // Syntax highlight for <code> elements
+          {
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          },
 
-            // Zoom in and out with Alt+click
-            {src: 'plugin/zoom-js/zoom.js', async: true},
+          // Zoom in and out with Alt+click
+          { src: "plugin/zoom-js/zoom.js", async: true },
 
-            // Speaker notes
-            {src: 'plugin/notes/notes.js', async: true},
+          // Speaker notes
+          { src: "plugin/notes/notes.js", async: true },
 
-            // MathJax
-            {src: 'plugin/math/math.js', async: true}
+          // MathJax
+          { src: "plugin/math/math.js", async: true }
         ],
         progress: false,
         slideNumber: true,
         history: true
-    });
+      });
 
-    // hljs.initHighlightingOnLoad();
-</script>
-</body>
+      // hljs.initHighlightingOnLoad();
+    </script>
+  </body>
 </html>
