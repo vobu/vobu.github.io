@@ -97,3 +97,6 @@ table.procon thead tr td {
   -webkit-mask-image: linear-gradient(to top, transparent 25%, black 75%);
   mask-image: linear-gradient(to top, transparent 25%, black 75%);
 }
+.reveal section pre.fullWidth {
+  width: 100%;
+}
