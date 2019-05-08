@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:a="http://www.w3.org/1999/html">
+
+<head>
+    <title>sitHVR 2019</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="../_revealjs/css/reveal.css" />
+    <link rel="stylesheet" href="../_revealjs/css/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../_revealjs/lib/css/zenburn.css" />
+
+    <!--[if lt IE 9]>
+      <script src="../_revealjs/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="custom.css" />
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>cloud first...</h1>
+                <h2>and then what!?</h2>
+                <p>sitHVR 2019 - Volker Buzek</p>
+            </section>
+
+            <section>
+                <h2 class="left">/me</h2>
+                <ul class="no-bullets">
+                    <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
+                    <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
+                    <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+                    <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
+                    <li><b>Slides</b>
+                        <ul class="no-bullets">
+                            <li><a href="https://vobu.github.io/materials/sitHVR-2019/">https://vobu.github.io/⏎</a>
+                            </li>
+                            <li><a href="https://vobu.github.io/materials/sitHVR-2019/">materials/sitHVR-2019/</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>cloud flavour</h2>
+                <p>
+                    <img class="m" src="img/nodejs.png" width="200" />
+                    <img class="m fragment" src="img/cf.png" width="100">
+                    <img class="m fragment" src="img/capm.png" width="180">
+                    <img class="m fragment" src="img/ui5.svg" width="140">
+                </p>
+            </section>
+
+            <section data-transition="none">
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <img src="img/sap-cp.png" class="subtle maskMeBottom" />
+            </section>
+
+            <section data-transition="none">
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <img src="img/sap-cp.png" class="subtle maskMeBottomLeft" />
+            </section>
+
+            <section data-transition="none">
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <figure>
+                    <img src="img/sap-cp.png" class="subtle" />
+                    <figcaption>src: EXP_100_62774, TechEd 2018</figcaption>
+                </figure>
+
+            </section>
+
+            <section>
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <figure>
+                    <img src="img/azure-basics.png" class="subtle" />
+                    <figcaption>src: <a
+                            href="http://rickrainey.com/2016/01/19/an-introduction-to-the-azure-resource-manager-arm/">rickrainey.com</a>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <figure>
+                    <img src="img/sap-service-fabrik.png" class="subtle" />
+                    <figcaption>src: <a href="https://github.com/cloudfoundry-incubator/service-fabrik-broker">github.com</a></figcaption>
+                </figure>
+
+            </section>
+
+            <section>
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <figure>
+                    <img src="img/sap-cf_k8s_vision.png" class="subtle" />
+                    <figcaption>src: <a
+                            href="https://blogs.sap.com/2018/10/19/cloud-foundry-and-kubernetes-where-do-they-differ-how-do-they-fit-together/?source=email-g-sap-technology-news-newsletter-20181031&sap-outbound-id=0847B008DA533CF90F4B8F25E73377A5488F7FD2&utm_source=SAPHybris&utm_medium=email&utm_campaign=608&utm_term=G-165414-1-Community%20Voice%20Newsletter___Learn%20about%20Cloud%20Foundry%20and%20Kubernetes&utm_content=EN">blogs.sap.com</a>
+                    </figcaption>
+                </figure>
+            </section>
+
+        </div>
+    </div>
+    <script src="../_revealjs/lib/js/head.min.js"></script>
+    <script src="../_revealjs/js/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            dependencies: [
+                // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                {
+                    src: "../_revealjs/lib/js/classList.js",
+                    condition: function () {
+                        return !document.body.classList;
+                    }
+                },
+
+                // Interpret Markdown in <section> elements
+                {
+                    src: "../_revealjs/plugin/markdown/marked.js",
+                    condition: function () {
+                        return !!document.querySelector("[data-markdown]");
+                    }
+                },
+                {
+                    src: "../_revealjs/plugin/markdown/markdown.js",
+                    condition: function () {
+                        return !!document.querySelector("[data-markdown]");
+                    }
+                },
+
+                // Syntax highlight for <code> elements
+                {
+                    src: "../_revealjs/plugin/highlight/highlight.js",
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+
+                // Zoom in and out with Alt+click
+                { src: "../_revealjs/plugin/zoom-js/zoom.js", async: true },
+
+                // Speaker notes
+                { src: "../_revealjs/plugin/notes/notes.js", async: true },
+
+                // MathJax
+                { src: "../_revealjs/plugin/math/math.js", async: true }
+            ],
+            progress: false,
+            slideNumber: true,
+            history: true
+        });
+
+      // hljs.initHighlightingOnLoad();
+    </script>
+</body>
+
+</html>
