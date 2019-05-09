@@ -19,6 +19,9 @@ figcaption {
   -o-filter: brightness(0.5);
   -ms-filter: brightness(0.5);
 }
+.remedy {
+  color: green;
+}
 li ul.no-bullets,
 ul.no-bullets {
   list-style-type: none;

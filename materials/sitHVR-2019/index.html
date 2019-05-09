@@ -39,26 +39,30 @@
                     <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
                     <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
                     <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
-                    <li><b>Slides</b>
-                        <ul class="no-bullets">
-                            <li><a href="https://vobu.github.io/materials/sitHVR-2019/">https://vobu.github.io/⏎</a>
-                            </li>
-                            <li><a href="https://vobu.github.io/materials/sitHVR-2019/">materials/sitHVR-2019/</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </section>
 
             <section>
                 <h2>cloud flavour</h2>
                 <p>
-                    <img class="m" src="img/nodejs.png" width="200" />
+                    <img class="m fragment" src="img/nodejs.png" width="200" />
                     <img class="m fragment" src="img/cf.png" width="100">
                     <img class="m fragment" src="img/capm.png" width="180">
                     <img class="m fragment" src="img/ui5.svg" width="140">
                 </p>
+                <p>
+                    <img class="m fragment" src="img/no-sap-webide.png" width="160" />
+                    <img class="m fragment" src="img/no-java.png" width="190" />
+                </p>
             </section>
 
+            <section>
+                <h2><span class="chapter">#1</span> architecture</h2>
+                <blockquote class="fragment">&ldquo;Completely stoked ~ @Docker Enterprise Engine for Amazon EC2 A1
+                    instances powered by @AWS Graviton Processors that feature 64-bit ARM Neoverse cores & custom
+                    silicon designed ~ 45% cost savings on running their scale-out containerized apps backed by
+                    commercial support from Docker&rdquo;</blockquote>
+            </section>
             <section data-transition="none">
                 <h2><span class="chapter">#1</span> architecture</h2>
                 <img src="img/sap-cp.png" class="subtle maskMeBottom" />
@@ -81,7 +85,8 @@
             <section>
                 <h2><span class="chapter">#1</span> architecture</h2>
                 <figure>
-                    <img src="img/azure-basics.png" class="subtle" />
+                    <img src="img/sap-cp-cf.png" class="subtle" width="394" />
+                    <img src="img/azure-basics.png" class="subtle fragment" />
                     <figcaption>src: <a
                             href="http://rickrainey.com/2016/01/19/an-introduction-to-the-azure-resource-manager-arm/">rickrainey.com</a>
                     </figcaption>
@@ -92,7 +97,9 @@
                 <h2><span class="chapter">#1</span> architecture</h2>
                 <figure>
                     <img src="img/sap-service-fabrik.png" class="subtle" />
-                    <figcaption>src: <a href="https://github.com/cloudfoundry-incubator/service-fabrik-broker">github.com</a></figcaption>
+                    <figcaption>src: <a
+                            href="https://github.com/cloudfoundry-incubator/service-fabrik-broker">github.com</a>
+                    </figcaption>
                 </figure>
 
             </section>
@@ -107,7 +114,85 @@
                 </figure>
             </section>
 
+            <section>
+                <h2><span class="remedy">#1</span> architecture</h2>
+                <ul class="no-bullets">
+                    <li class="fragment">🔨 &rarr; dedicated provider</li>
+                    <li class="fragment">⚐ &rarr; withdraw and trust</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><span class="chapter">#2</span> developing</h2>
+                <figure>
+                    <img src="img/app-router-diagram.png" class="subtle fragment" />
+                    <figcaption>src: @sap/approuter docu</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2><span class="remedy">#2</span> developing</h2>
+                <ul>
+                    <li class="fragment">utilize <code>approuter</code> locally
+                        <pre class="fullWidth"><code class="js" data-trim>
+                                const xsAppConfig = JSON.parse(
+                                    fs.readFileSync('xs-app.json', 'utf8')
+                                )
+                                const approuter = require('@sap/approuter')
+                                approuter().start({
+                                    xsappConfig: xsAppConfig
+                                })
+                        </code></pre>
+                    </li>
+                    <li class="fragment"><a href="https://www.npmjs.com/package/cfenv"><code>cfenv</code></a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><span class="chapter">#3</span> debugging</h2>
+                <figure>
+                    <img src="img/sap-cf-apps.png" class="subtleWhite" width="700" />
+                    <figcaption>src: SAP CP ppt stencil</figcaption>
+                </figure>
+
+            </section>
+            <section>
+                <h2><span class="remedy">#3</span> debugging</h2>
+                <ul>
+                    <li>extensive <a href="https://github.com/SAP/cf-nodejs-logging-support">logging</a></li>
+                    <li class="fragment">remote inspection
+                        <pre class="fullWidth"><code class="bash" data-trim>
+                        # enable ssh
+                        cf enable-ssh &lt;app&gt;
+                        
+                        # ssh tunnel
+                        cf ssh -N -T -L 9229:127.0.0.1:9229 &lt;app&gt;
+                        
+                        # node --inspect!
+                        &lt;node-debugger&gt; attach localhost:9229
+                    </code></pre>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                    <h2 class="left">/me</h2>
+                    <ul class="no-bullets">
+                        <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
+                        <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
+                        <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+                        <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
+                        <li><b>Slides</b>
+                            <ul class="no-bullets">
+                                <li><a href="https://vobu.github.io/materials/sitHVR-2019/">https://vobu.github.io/⏎</a>
+                                </li>
+                                <li><a href="https://vobu.github.io/materials/sitHVR-2019/">materials/sitHVR-2019/</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
         </div>
+
+        
     </div>
     <script src="../_revealjs/lib/js/head.min.js"></script>
     <script src="../_revealjs/js/reveal.js"></script>
