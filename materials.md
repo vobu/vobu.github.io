@@ -18,7 +18,8 @@ Here's a collection of materials for talks, presentation and lectures I gave. No
     - 🖥 [Slides](/materials/ui5con_2017_SAP)
 - Mar 2017: 🖥 [UI5con @ FFM](/materials/ui5con_2017_FFM): "Asynchronous Code Handling (and how to test that)"
 - Mar 2016: very first 🥳 [UI5con @ FFM](https://wiki.scn.sap.com/wiki/display/events/UI5con+2016+-+Frankfurt#UI5con2016-Frankfurt-SessionsCFPList):  
-  📄 ["Inside a Container: Persistence and UI5"](/materials/2016-03-11.UI5con.pdf)
+  - 🎥 [YouTube recording](https://www.youtube.com/watch?v=4W4_spvHaz8)
+  - 📄 ["Inside a Container: Persistence and UI5"](/materials/2016-03-11.UI5con.pdf)
 - Mar 2016: Webkongress Erlangen: ["HTML5 @ SAP"](https://www.webkongress.fau.de/talks/html5sap-webtechnologie-als-strategische-ui-komponente-im-sap-universum/)
     - 📹 [Video with accompanying slides](https://www.video.uni-erlangen.de/clip/id/6110)
     - 📄 [Presentation](/materials/2016-03-09.WKE.pdf)
