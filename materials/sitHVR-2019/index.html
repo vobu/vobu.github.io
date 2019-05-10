@@ -131,6 +131,38 @@
             </section>
 
             <section>
+                <h2><span class="chapter">#2</span> developing</h2>
+                <pre data-trim><code class="yaml">
+_schema-version: 2.0.0
+ID: my-app
+version: 1.0.0
+modules:
+    // ...
+  - name: srv
+    type: nodejs
+    path: srv
+    // ...
+    provides:
+      - name: srv_api
+        properties:
+          url: '${default-url}'
+    // ...
+  - name: ui
+    type: html5
+    // ...
+    requires:
+      // ...
+      - name: srv_api
+        group: destinations
+        properties:
+          name: backend
+          url: '~{url}'
+          forwardAuthToken: true
+// ...
+                </code></pre>
+            </section>
+
+            <section>
                 <h2><span class="remedy">#2</span> developing</h2>
                 <ul>
                     <li class="fragment">utilize <code>approuter</code> locally
