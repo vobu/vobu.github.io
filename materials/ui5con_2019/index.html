@@ -30,6 +30,46 @@
             <h1>Dive <img src="img/snorkel.svg" width="100px" class="nada"/> with UI5!</h1>
             <p><img src="img/phoenix_blue_tiny.png" class="m" height="60" width="60"/>UI5con 2019 - Volker Buzek</p>
         </section>
+
+
+        <section>
+            <h3>talk outline</h3>
+            <p>
+                Use Case - Realization - Fiori Guideline
+            </p>
+            <table class="simple fragment">
+                <thead>
+                <tr>
+                    <td>Guideline</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ROLE - BASED</td>
+                    <td><cite>Designed for you, your needs, and how you work</cite></td>
+                </tr>
+                <tr>
+                    <td>ADAPTIVE</td>
+                    <td><cite>Adapts to multiple use cases and devices</cite></td>
+                </tr>
+                <tr>
+                    <td>DELIGHTFUL</td>
+                    <td><cite>Makes an emotional connection</cite></td>
+                </tr>
+                <tr>
+                    <td>COHERENT</td>
+                    <td><cite>Provides one fluid, intuitive experience</cite></td>
+                </tr>
+                <tr>
+                    <td>SIMPLE</td>
+                    <td><cite>Includes only what is necessary</cite></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+
         <section>
             <h3>Your Dive Market (YDM)</h3>
             <p><img src="img/YDM.png" class="subtle" style="padding: 1em" height="350"></p>
@@ -42,6 +82,101 @@
         <section>
             <h3>Your Dive Market (YDM)</h3>
             <p><img src="img/YDM-arch.png"></p>
+        </section>
+
+
+        <section>
+            <h3>dev env </h3>
+            <h4 class="topRight remedy fragment" data-fragment-index="3"><span class="remedy">role-based</span></h4>
+            <table class="noBorder">
+                <tr>
+                    <td><img src="img/local-UI-approuter.png" class="subtle" width="150"></td>
+                    <td></td>
+                    <td class="fragment" data-fragment-index="1"><img src="img/cf-BE-cds.png" class="subtle"
+                                                                      width="150"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><pre class="fullWidth fragment" data-fragment-index="2"><code class="js" data-trim>
+                        // .cdsrc.json
+                        "john": {
+                          "password": "well...",
+                            "jwt": {
+                              "userInfo": {
+                                "logonName": "john"
+                               },
+                               "scopes": ["user"]
+                             }
+                        }
+                    </code></pre>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <section><h3>3D-ifying</h3>
+                <h4 class="topRight fragment"><span class="remedy">delightful</span>
+                </h4>
+                <pre><code class="js" data-trim>sap.ui.define([
+    "ydm/lib/three"
+],
+function (/* THREE */) {
+    buildSphere: function () {
+        sap.ui.require([
+            "ydm/lib/DeviceOrientationControls",
+            "ydm/lib/OrbitControls"
+        ], function () {
+            // 🧙‍♂️✨💫
+        });
+    }
+})</code></pre>
+            </section>
+            <section>
+                <h3><code>cordova</code> packaging</h3>
+                <h4 class="topRight fragment"><span class="remedy">adaptive</span></h4>
+                <ul>
+                    <li>outsource UI5 bootstrap &rArr; <code>deviceready</code></li>
+                    <li><code>ui5 build preload</code></li>
+                </ul>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h3>message flow</h3>
+                <h4 class="topRight fragment"><span class="remedy">(all 🤩)</span></h4>
+                <img src="img/msg-flow.png" class="subtleWhite">
+            </section>
+
+            <section>
+                <h3>goodie: buddy shake</h3>
+                <pre><code class="js" data-trim="">
+                    function onShake(oEvent) {
+                        oEvent.acceleration.x
+                                           .y
+                                           .z
+                    }
+                    window.addEventListener("devicemotion", onShake, true);
+
+                </code></pre>
+            </section>
+        </section>
+
+
+        <section>
+            <h3>what's next for YDM</h3>
+            <ul>
+                <li>get a major dive organization on-board <br>
+                    <span class="small">SSI? PADI? You listening? 😀</span></li>
+                <li class="fragment">team up with a dive base company<br>
+                    <span class="small">Orca? Werner Lau? You listening? 😀</span></li>
+                <li class="fragment">hook up with a dive computer manufacturer<br>
+                    <span class="small">Suunto? Mares? Paralenz? heinrichs weikamp? You listening? 😀</span></li>
+                <li class="fragment remedy">make Volker happy (IT + Scuba, yay!)</li>
+            </ul>
         </section>
 
         <section>

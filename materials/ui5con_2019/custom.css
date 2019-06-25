@@ -31,6 +31,12 @@ ul.left {
   display: block !important;
   margin: 0 0 0 5em;
 }
+table.noBorder tr td {
+  border: 0;
+}
+table.simple thead {
+  font-weight: bold;
+}
 table.procon {
   width: 90%;
   font-size: 91.12%;
@@ -75,6 +81,11 @@ table.procon thead tr td {
 .credits li {
   font-size: 1.5rem;
 }
+.topRight {
+  position: absolute;
+  top: -1em;
+  right: 2em;
+}
 .reveal section img.nada {
   background: none;
   border: none;
@@ -90,7 +101,7 @@ table.procon thead tr td {
 .reveal section img.subtleWhite {
   margin: 15px 0;
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #93a1a1;
+  border: 3px solid #93a1a1;
   padding: 0.25em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
