@@ -83,7 +83,7 @@ table.procon thead tr td {
 }
 .topRight {
   position: absolute;
-  top: -1em;
+  top: 0em;
   right: 2em;
 }
 .reveal section img.nada {
