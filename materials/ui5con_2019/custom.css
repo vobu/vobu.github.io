@@ -86,6 +86,15 @@ table.procon thead tr td {
   top: 0em;
   right: 2em;
 }
+.serviceCenter p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #924164;
+  font-weight: bold;
+}
 .reveal section img.nada {
   background: none;
   border: none;
