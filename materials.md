@@ -6,6 +6,9 @@ sidebar_link: true
 ---
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Jun 2019: 🖥 [UI5con](https://openui5.org/ui5con/): "Dive with UI5!"
+    - 🖥 [Slides](/materials/ui5con_2019)
+- Jun 2019: 🖥 ["Extending `@sap/approuter`"](/materials/dsag_ui_exp_2019/) at DSAG UI Expert meeting
 - May 2019: 🖥 ["cloud first...then what!?"](/materials/sitHVR-2019/), SAP Inside Track Hannover (sitHVR)
 - Mar 2019: 🖥 ["E2E + visual regression testing w/ UIveri5"](/materials/sitFFM-2019/), SAP Inside Track Frankfurt (sitFRA)
 - Feb 2019: 🖥 DSAG Technologietage 2019: ["UI5 Entwicklung auf SAP CP (cloud foundry) mit node.js-basierten Microservices und Einbindung in den Continuous Integration Zyklus"](/materials/2019-02-13.DSAGTT19-ui5-nodejs-cf-capm.pdf)
