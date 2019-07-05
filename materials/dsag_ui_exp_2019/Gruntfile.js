@@ -9,21 +9,21 @@ module.exports = function (grunt) {
                     base: ["./", "../"],
                     port: 27619,
                     // keepalive: true
-                    livereload: true
+                    // livereload: true
                 }
             }
         },
         watch: {
-            livereload: {
-                options: {
-                    livereload: true
-                },
-                files: [
-                    "**",
-                    "!node_modules/**",
-                    "!*.less"
-                ]
-            },
+            // livereload: {
+            //     options: {
+            //         livereload: true
+            //     },
+            //     files: [
+            //         "**",
+            //         "!node_modules/**",
+            //         "!*.less"
+            //     ]
+            // },
             styles: {
                 files: ['custom.less'], // which files to watch
                 tasks: ['less'],
