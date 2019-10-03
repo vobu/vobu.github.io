@@ -28,54 +28,29 @@
     <div class="slides">
         <section>
             <h1>Dive <img src="img/snorkel.svg" width="100px" class="nada"/> with UI5! (and CAP! and CF!)</h1>
-            <p><img src="img/phoenix_blue_tiny.png" class="m" height="60" width="60"/>TechEd 2019 - Volker Buzek</p>
+            <p>TechEd 2019 - Volker Buzek</p>
+        </section>
+
+        <section>
+            <h2 class="left">/me</h2>
+            <ul class="no-bullets">
+                <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
+                <li>Dive Instructor</li>
+                <li>&nbsp;</li>
+                <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
+                <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+                <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
+            </ul>
+            </p>
         </section>
 
         <section>
             <p><b>j&s-soft GmbH</b></p>
             <p>SAP-Consultancy with focus technology & innovation, <br>
-              since 2003 – 27 ppl – WDF-HD-DÜ – ISO 9001</p>
+                since 2003 – 29 ppl – WDF-HD-DÜ – ISO 9001</p>
 
             <img src="img/js-soft.png" class="nada" width="850"/>
         </section>
-
-        <section>
-            <h3>talk outline</h3>
-            <p>
-                Use Case <span class="fragment">- Realization </span><span class="fragment">- Fiori Guideline</span>
-            </p>
-            <table class="simple fragment">
-                <thead>
-                <tr>
-                    <td>Guideline</td>
-                    <td>Description</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>ROLE - BASED</td>
-                    <td><cite>Designed for you, your needs, and how you work</cite></td>
-                </tr>
-                <tr>
-                    <td>ADAPTIVE</td>
-                    <td><cite>Adapts to multiple use cases and devices</cite></td>
-                </tr>
-                <tr>
-                    <td>DELIGHTFUL</td>
-                    <td><cite>Makes an emotional connection</cite></td>
-                </tr>
-                <tr>
-                    <td>COHERENT</td>
-                    <td><cite>Provides one fluid, intuitive experience</cite></td>
-                </tr>
-                <tr>
-                    <td>SIMPLE</td>
-                    <td><cite>Includes only what is necessary</cite></td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
-
 
         <section>
             <h3>Your Dive Market (YDM)</h3>
@@ -88,120 +63,35 @@
             <div class="serviceCenter fragment"><p>SERVICE</p></div>
         </section>
 
-
-        <section>
-            <h3>Your Dive Market (YDM)</h3>
-            <p><img src="img/YDM-arch.png"></p>
+        <section data-transition="none" data-transition-speed="fast">
+            <h3><span class="noUpper"><code>cf</code>: CAP</span></h3>
+            <p><img src="img/cf-cap.png" class="subtle" height="450"></p>
         </section>
 
+        <section data-transition="none" data-transition-speed="fast">
+            <h3><span class="noUpper">"CAP-ification": <code>cf</code> &rarr; local</span></h3>
+            <p><img src="img/local-cap.png" class="subtle" height="450"></p>
+        </section>
 
-        <section>
-            <h3>dev env </h3>
-            <h4 class="topRight remedy fragment" data-fragment-index="3"><span class="remedy">role-based</span></h4>
-            <table class="noBorder">
-                <tr>
-                    <td><img src="img/local-UI-approuter.png" class="subtle" width="150"></td>
-                    <td></td>
-                    <td class="fragment" data-fragment-index="1"><img src="img/cf-BE-cds.png" class="subtle"
-                                                                      width="150"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><pre class="fullWidth fragment" data-fragment-index="2"><code class="js" data-trim>
-                        // .cdsrc.json
-                        "john": {
-                          "password": "well...",
-                            "jwt": {
-                              "userInfo": {
-                                "logonName": "john"
-                               },
-                               "scopes": ["user"]
-                             }
-                        }
-                    </code></pre>
-                    </td>
-                    <td></td>
-                </tr>
-            </table>
+        <section data-transition="none" data-transition-speed="fast">
+            <h3><span class="noUpper">"UI5-ication": decouple UI</span></h3>
+            <p><img src="img/local-decouple-ui.png" class="subtle" height="450"></p>
+        </section>
+
+        <section data-transition="none" data-transition-speed="fast">
+            <h3><span class="noUpper">"CAP-UI5-ation": <code>cf</code> + local</span></h3>
+            <p><img src="img/local+cf.png" class="subtle" height="550"></p>
         </section>
 
         <section>
-            <section><h3>3D-ifying</h3>
-                <h4 class="topRight fragment"><span class="remedy">delightful</span>
-                </h4>
-                <pre><code class="js" data-trim>sap.ui.define([
-    "ydm/lib/three"
-],
-function (/* THREE */) {
-    buildSphere: function () {
-        sap.ui.require([
-            "ydm/lib/DeviceOrientationControls",
-            "ydm/lib/OrbitControls"
-        ], function () {
-            // 🧙‍♂️✨💫
-        });
-    }
-})</code></pre>
-            </section>
-            <section>
-                <h3><code>cordova</code> packaging</h3>
-                <h4 class="topRight fragment"><span class="remedy">adaptive</span></h4>
-                <ul>
-                    <li>outsource UI5 bootstrap &rArr; <code>deviceready</code></li>
-                    <li><code>ui5 build preload</code></li>
-                </ul>
-            </section>
-        </section>
-
-
-        <section>
-            <section>
-                <h3>message flow</h3>
-                <h4 class="topRight fragment"><span class="remedy">(all 🤩)</span></h4>
-                <img src="img/msg-flow.png" class="subtleWhite">
-            </section>
-
-            <section>
-                <h3>goodie: buddy shake</h3>
-                <pre><code class="js" data-trim="">
-                    function onShake(oEvent) {
-                        oEvent.acceleration.x
-                                           .y
-                                           .z
-                    }
-                    window.addEventListener("devicemotion", onShake, true);
-
-                </code></pre>
-            </section>
-        </section>
-
-
-        <section>
-            <h3>what's next for YDM</h3>
+            <h3>done! (almost...)</h3>
             <ul>
-                <li>get a major dive organization on-board <br>
-                    <span class="small">SSI? PADI? You listening? 😀</span></li>
-                <li class="fragment">team up with a dive base company<br>
-                    <span class="small">Orca? Werner Lau? You listening? 😀</span></li>
-                <li class="fragment">hook up with a dive computer manufacturer<br>
-                    <span class="small">Suunto? Mares? Paralenz? heinrichs weikamp? You listening? 😀</span></li>
-                <li class="fragment remedy">make Volker happy (IT + Scuba, yay!)</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2 class="left">/me</h2>
-            <ul class="no-bullets">
-                <li>Development Architect Mobility @ <a href="https://www.js-soft.com">j&s-soft</a></li>
-                <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
-                <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
-                <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
-                <li><b>Slides</b>
-                    <ul class="no-bullets">
-                        <li><a href="https://vobu.github.io/materials/ui5con_2019/">https://vobu.github.io/⏎</a>
-                        </li>
-                        <li><a href="https://vobu.github.io/materials/ui5con_2019/">materials/ui5con_2019/</a></li>
-                    </ul>
+                <li>sign up for early (iOS|Android).app access:<br>
+                    <a href="https://www.js-soft.com/en/ydm">js-soft.com/en/YDM</a>
+                </li>
+                <li>workshop with <code>UI5</code> + <code>CDS/CAP</code> + <code>cf</code><br>
+                    in hybrid SAP landscapes coming up:<br>
+                    <a href="https://www.js-soft.com/en/workshop">js-soft.com/en/workshop</a>
                 </li>
             </ul>
             <p class="left small" style="padding-top:3em"><b>image credits</b>
@@ -219,6 +109,7 @@ function (/* THREE */) {
 
             </p>
         </section>
+
     </div>
 
 
