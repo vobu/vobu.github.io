@@ -33,8 +33,8 @@ author:
 markdown: kramdown
 highlighter: rouge
 # theme: minima
-# theme: jekyll-theme-hydeout
-remote_theme: fongandrew/hydeout
+theme: jekyll-theme-hydeout
+# remote_theme: fongandrew/hydeout
 plugins:
   - jekyll-feed
   - jekyll-gist
