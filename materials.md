@@ -7,6 +7,10 @@ sidebar_link: true
 
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Feb 2020: [UI5con Belgium](https://openui5.org/ui5con/belgium2020/): "ui5-tooling extensibilitly + CAP + Testing = nice!"
+  - 🖥 [Slides](/materials/ui5con_2020_BE)
+  - ⌨️ [github sources](https://github.com/petermuessig/ui5-ecosystem-showcase/tree/feature/cap)
+  - 🎥 YouTube recording coming soon
 - Oct 2019: 🖥 [TechEd](https://events.sap.com/teched-emea/en/home): "Dive with UI5! (and CAP! and CF!)"
   - 🖥 [Slides](/materials/teched_2019)
 - Jun 2019: 🖥 [UI5con](https://openui5.org/ui5con/): "Dive with UI5!"
