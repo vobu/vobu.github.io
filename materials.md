@@ -11,7 +11,6 @@ Here's a collection of materials for talks, presentation and lectures I gave. No
   - 🎥 [YouTube recording](https://www.youtube.com/watch?v=Q8TEIy7qUmI&list=PLVf0R17F93RXT2tzhHzAr-iiYTmc9KngS&index=3&t=0s)
   - 🖥 [Slides](/materials/ui5con_2020_BE)
   - ⌨️ [github sources](https://github.com/vobu/ui5-cap)
-  - 🎥 YouTube recording coming soon
 - Oct 2019: 🖥 [TechEd](https://events.sap.com/teched-emea/en/home): "Dive with UI5! (and CAP! and CF!)"
   - 🖥 [Slides](/materials/teched_2019)
 - Jun 2019: 🖥 [UI5con](https://openui5.org/ui5con/): "Dive with UI5!"
