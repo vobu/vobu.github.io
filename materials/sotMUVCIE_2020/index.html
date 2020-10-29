@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:a="http://www.w3.org/1999/html">
+
+<head>
+    <title>sotMUCVIE 2020</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="../revealjs/css/reveal.css" />
+    <link rel="stylesheet" href="../revealjs/css/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../revealjs/lib/css/zenburn.css" />
+
+    <!--[if lt IE 9]>
+    <script src="../revealjs/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="custom.css" />
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <div class="reveal"> 
+        <div class="slides">
+            <section> 
+                <h2><code>wdi5</code>(/vdif5/) for UI5</h2>
+                <p>sotMUCVIE 2020 - Volker Buzek</p>
+            </section>
+
+            <section data-transition="none" data-transition-speed="fast">
+                <h3><span class="noUpper"><code>wdi5</code>: what you get (and what not 😆)</span></h3>
+                <p><img src="img/testpyramid+wdi5.png" class="white"></p>
+            </section>
+
+            <section data-transition="none" data-transition-speed="fast">
+                <h3><span class="noUpper"><code>wdi5</code></span></h3>
+                <h4><span class="noUpper">wdio-ui5-service <span class="small">+ wdi5</span></h4>
+                <p><img src="img/wdio-ui5-service.png" class="white"></p>
+            </section>
+            <section data-transition="none" data-transition-speed="fast">
+                <h3><span class="noUpper"><code>wdi5</code></span></h3>
+                <h4><span class="noUpper"><span class="small">wdio-ui5-service +</span>wdi5</span></h4>
+                <p><img src="img/wdi5-wdi5.png" class="white"></p>
+            </section>
+
+            <section data-transition="none" data-transition-speed="fast">
+                <h3><span class="noUpper"><code>wdi5</code>: under the hood</span></h3>
+                <p><img src="img/wdi5-under-the-hood.png" class="white"></p>
+            </section>
+
+
+        
+
+            <section>
+                <h2 class="left">/me</h2>
+                <ul class="no-bullets">
+                    <li>Development Architect @ <a href="https://www.js-soft.com">j&s-soft</a></li>
+                    <li><b>Twitter</b> <a href="https://www.twitter.com/vobu">@vobu</a></li>
+                    <li><b>Slack</b> <a href="slack:vobu">vobu</a></li>
+                    <li><b>Mail</b> <a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li>
+                    <li><b>Slides</b>
+                        <ul class="no-bullets">
+                            <li><a href="https://vobu.github.io/materials/sotMUCVIE_2020/">https://vobu.github.io/⏎</a>
+                            </li>
+                            <li><a href="https://vobu.github.io/materials/sotMUCVIE_2020/">materials/sotMUCVIE_2020/</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><b>&rarr; wdi5</b> <a href="https://github.com/js-soft/wdi5">https://github.com/js-soft/wdi5</a></li>
+
+                </ul>
+            </section>
+
+        </div>
+
+
+    </div>
+    <script src="../revealjs/js/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            dependencies: [
+                // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                {
+                    src: "../revealjs/lib/js/classList.js",
+                    condition: function () {
+                        return !document.body.classList;
+                    }
+                },
+
+                // Interpret Markdown in <section> elements
+                {
+                    src: "../revealjs/plugin/markdown/marked.js",
+                    condition: function () {
+                        return !!document.querySelector("[data-markdown]");
+                    }
+                },
+                {
+                    src: "../revealjs/plugin/markdown/markdown.js",
+                    condition: function () {
+                        return !!document.querySelector("[data-markdown]");
+                    }
+                },
+
+                // Syntax highlight for <code> elements
+                {
+                    src: "../revealjs/plugin/highlight/highlight.js",
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+
+                // Zoom in and out with Alt+click
+                { src: "../revealjs/plugin/zoom-js/zoom.js", async: true },
+
+                // Speaker notes
+                { src: "../revealjs/plugin/notes/notes.js", async: true },
+
+                // MathJax
+                { src: "../revealjs/plugin/math/math.js", async: true }
+            ],
+            progress: false,
+            slideNumber: true,
+            history: true
+        });
+
+    // hljs.initHighlightingOnLoad();
+    </script>
+</body>
+
+</html>
