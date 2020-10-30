@@ -7,6 +7,15 @@ sidebar_link: true
 
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Oct 2020: [SAP online track Munich/Vienna](https://wiki.scn.sap.com/wiki/display/events/SAP+Online+Track+Munich+and+Vienna+2020#SAPOnlineTrackMunichandVienna2020-29thOctober2:00pm-6:00pm): "wdi5 (/vdi5/) for UI5"
+  - 🖥 [Slides](/materials/sotMUVCIE_2020)
+  - ⌨️ [wdi5 on gh](https://github.com/jssoft/wdi5)
+- Oct 2020: [Devtoberfest SAP, Interview on `cds-pg`](https://community.sap.com/media/devtoberfest/devtoberfest-community-week-volker-buzek-gregor-wolf)
+  together with community giant Gregor Wolf, interviewed by legendary Thomas Jung
+- Jul 2020: [UI5con ON AIR](https://openui5.org/ui5con/onair2020/): "wdi5 (/vdi5/) - cross-platform test framework for hybrid UI5 apps"
+  - 🎥 [YouTube recording](https://www.youtube.com/watch?v=VPKscX7Ap2E)
+  - 🖥 [Slides](https://openui5.org/ui5con/onair2020/slides/UI5con2020_wdi5_cross_platform_test_framework_for_hybrid_UI5_apps.pdf)
+  - ⌨️ [wdi5 on gh](https://github.com/jssoft/wdi5)
 - Feb 2020: [UI5con Belgium](https://openui5.org/ui5con/belgium2020/): "ui5-tooling extensibilitly + CAP + Testing = nice!"
   - 🎥 [YouTube recording](https://www.youtube.com/watch?v=Q8TEIy7qUmI&list=PLVf0R17F93RXT2tzhHzAr-iiYTmc9KngS&index=3&t=0s)
   - 🖥 [Slides](/materials/ui5con_2020_BE)
