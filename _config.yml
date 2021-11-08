@@ -33,14 +33,17 @@ author:
 markdown: kramdown
 highlighter: rouge
 # theme: minima
-# theme: jekyll-theme-hydeout
-remote_theme: fongandrew/hydeout
+theme: jekyll-theme-hydeout
+#remote_theme: fongandrew/hydeout
 plugins:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
 
 paginate: 5
+
+exclude:
+  - devtoberfest-2021-frontend-coding-challenge/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
