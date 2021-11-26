@@ -7,6 +7,7 @@ sidebar_link: true
 
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Feb 2021: [UI5ers live on custom controls](https://www.youtube.com/watch?v=_TP5gomVjuo&t=1678s): showcasing UI5 custom control distribution via `npm`
 - Oct 2020: [SAP online track Munich/Vienna](https://wiki.scn.sap.com/wiki/display/events/SAP+Online+Track+Munich+and+Vienna+2020#SAPOnlineTrackMunichandVienna2020-29thOctober2:00pm-6:00pm): "wdi5 (/vdi5/) for UI5"
   - 🖥 [Slides](/materials/sotMUVCIE_2020)
   - ⌨️ [wdi5 on gh](https://github.com/jssoft/wdi5)
