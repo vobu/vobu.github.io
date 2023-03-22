@@ -7,6 +7,17 @@ sidebar_link: true
 
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Oct 2022: [Devtoberfest 2022 had a focus topic on `wdi5`](https://developers.sap.com/tutorials/devtoberfest-week3-user-interface-wdi5.html). And I started that week with "Testing UI5 Apps with wdi5 - Zero to Hero to Continuous Integration"
+  - :movie_camera: [YouTube recording](https://www.youtube.com/watch?v=f-0ztSnb2-c)
+  - :keyboard: [gh repo with sources for the demo](https://github.com/ui5-community/wdi5-workshop)
+- Sep 2022: golem.de article on CAP: :de: ["APIs und Full-Stack-Anwendungen mit CAP von SAP erstellen"](https://www.golem.de/news/programmierung-apis-und-full-stack-anwendungen-mit-cap-von-sap-erstellen-2209-168005.html)
+- Jul 2022: [UI5con HYBRID](https://openui5.org/ui5con/germany2022/): workshop on `wdi5`
+- Jul 2022: :microphone: openSAP Podcast "UI5 Newscast": [`wdi5` - UI5s Open-Source End-to-End Testing Framework](https://podcast.opensap.info/ui5-newscast/2022/07/04/ui5-newscast-028-wdi5-ui5s-open-source-end-to-end-testing-framework/)
+- Jul 2022: :microphone: openSAP Podcast "The Open Source Way": [`wdi5` – UI5’s Open-Source End-to-End Testing Framework](https://podcast.opensap.info/open-source-way/2022/07/27/wdi5-ui5s-open-source-end-to-end-testing-framework/)
+- Jun 2022: ["Should I learn UI5"](https://www.youtube.com/watch?v=j8o9z7a-ZHc): got interviewed as a SAP Mentor by Stephanie De Camara Marley
+- Apr 2022: golem.de article on UI5 and Fiori: :de: ["Die Optik von SAP"](https://www.golem.de/news/sap-ui5-und-fiori-die-optik-von-sap-2204-163184.html)
+- Mar 2022: [UI5ers live](https://www.youtube.com/watch?v=iZ5P2BfkWo0): spotlight on `wdi5`
+- Oct 2021: [Devtoberfest 2021 winner stream w/ SAP CTO Jürgen Müller](https://www.youtube.com/watch?v=xfcz5h_M_go&t=698s)
 - Feb 2021: [UI5ers live on custom controls](https://www.youtube.com/watch?v=_TP5gomVjuo&t=1678s): showcasing UI5 custom control distribution via `npm`
 - Oct 2020: [SAP online track Munich/Vienna](https://wiki.scn.sap.com/wiki/display/events/SAP+Online+Track+Munich+and+Vienna+2020#SAPOnlineTrackMunichandVienna2020-29thOctober2:00pm-6:00pm): "wdi5 (/vdi5/) for UI5"
   - 🖥 [Slides](/materials/sotMUVCIE_2020)
