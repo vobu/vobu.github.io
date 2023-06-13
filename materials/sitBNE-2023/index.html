@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>UI5 masterclass</title>
+
+	<link rel="stylesheet" href="../revealjs/dist/reset.css">
+	<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+	<link rel="stylesheet" href="../revealjs/dist/theme/moon.css">
+	<link rel="stylesheet" href="./custom.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h4>UI5 thingies</h4>
+				<p>#sitBNE 2023 - Volker Buzek</p>
+			</section>
+			<section>
+				<h3><span class="noUpper">you</span></h3>
+				<img src="img/00_you.png" alt="you" width="40%"/>
+			</section>
+			<section data-transition="none">
+				<h3><span class="noUpper">you</span> + SAP</h3>
+				<img src="img/01_you+sap.png" alt="you + SAP" width="40%"/>
+			</section>
+			<section data-transition="none">
+				<h3><span class="noUpper">you</span> + SAP + <span class="noUpper">community</span></h3>
+				<img src="img/02_you+sap+comm.png" alt="you + SAP + community" width="40%"/>
+			</section>
+			<section data-transition="none">
+				<h3><span class="noUpper">you</span> + SAP + <span class="noUpper">community</span> + <span class="noUpper">yourself</span></h3>
+				<img src="img/03_you+sap+comm+yourself.png" alt="you + SAP + community + yourself" width="40%"/>
+			</section>
+			<section data-transition="none">
+				<h3>arranger</h3>
+				<img src="img/04_you+arranged.png" alt="arrangement" width="40%"/>
+			</section>
+			<section>
+				<h3></h3>
+				<p>full <span class="strike">stack</span> <b>product</b> developer</p>
+			</section>
+			<section>
+				<h3><code>yo</code></h3>
+				<p><code>easy-ui5</code> ⧪</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ts-app</code> &rarr; <span class="bold">YOURS</span></p>
+				<p><code>@sap/fiori</code> &nearr;</p>
+			</section>
+			<section>
+				<p class="left"><code>ui5 serve \<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>—accept-remote-connections</b></code></p>
+			</section>
+			<section>
+				<h3>OData v4 model</h3>
+				<p>...auto-expands</p>
+			</section>
+			<section>
+				<p><code>yo easy-ui5 <b>--addGhOrg $org</b></code></p>
+			</section>
+			<section>
+				<h3>OData v4 macros</h3>
+				<p>aka smart controls for v4</p>
+				<p>aka FE macros</p>
+				<p>aka FPM building blocks</p>
+				<p class="fragment">⚡️ perf</p>
+				<p class="fragment">⚡️ <code>sap-ui-xx-cache-use=false</code></p>
+			</section>
+			<section>
+				<h3>uni-directional binding</h3>
+				<p>"reactivity"</p>
+			</section>
+			<section>
+				<h3><code>wdi5</code></h3>
+				<p>"grow as you go"</p>
+				<p class="fragment">advanced usage</p>
+				<p class="fragment">scale out and up</p>
+			</section>
+			<section>
+				<h4>summary</h4>
+				<ul class="no-bullets">
+					<li>scaffolding && ui5 tooling + extensions</li>
+					<li class="fragment">v4 smart controls && "reactive" binding</li>
+					<li class="fragment"><code>wdi5</code></li>
+				</ul>
+			</section>
+			<section>
+                <h2 class="left">/me</h2>
+				<p>Development Architect @ <a href="https://www.js-soft.com">j&s-soft</a></p>
+                <dl>
+                    <dt><b>twitter</b></dt><dd><a href="https://www.twitter.com/vobu">@vobu</a></li></dd>
+                    <dt><b>mastodon</b></dt><dd><a href="https://saptodon.org/@vobu">@vobu@saptodon.org</a></li></dd>
+                    <dt><b>slack</b></dt><dd><a href="slack:vobu">vobu</a></li></dd>
+                    <dt><b>mail</b></dt><dd><a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li></dd>
+                    <dt><b>book! 📘</b></dt><dd> SAP UI Frameworks for Enterprise Developers -<br>a Practical Guide</li></dd>
+                </dl>
+            </section>
+		</div>
+	</div>
+
+	<script src="../revealjs/dist/reveal.js"></script>
+	<script src="../revealjs/plugin/notes/notes.js"></script>
+	<script src="../revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../revealjs/plugin/highlight/highlight.js"></script>
+	<script src="../revealjs/plugin/zoom/zoom.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			controlsTutorial: false, // no bouncing
+			progress: false,
+			// Learn about reveal.js/plugins: https://revealjs.com/reveal.js/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
+		});
+	</script>
+</body>
+
+</html>
