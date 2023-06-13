@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>BDaaS presentation</title>
+
+	<link rel="stylesheet" href="../revealjs/dist/reset.css">
+	<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+	<link rel="stylesheet" href="../revealjs/dist/theme/moon.css">
+	<link rel="stylesheet" href="./custom.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h4>process-driven software development on BTP</h4>
+				<p>#MasteringSAP 2023 - Volker Buzek</p>
+			</section>
+			<section>
+				<h2 class="left">/me</h2>
+				<p>Development Architect @ <a href="https://www.js-soft.com">j&s-soft</a></p>
+				<p>SAP Mentor</p>
+                <dl>
+                    <dt><b>twitter</b></dt><dd><a href="https://www.twitter.com/vobu">@vobu</a></li></dd>
+                    <dt><b>mastodon</b></dt><dd><a href="https://saptodon.org/@vobu">@vobu@saptodon.org</a></li></dd>
+                    <dt><b>slack</b></dt><dd><a href="slack:vobu">vobu</a></li></dd>
+                    <dt><b>mail</b></dt><dd><a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li></dd>
+                    <dt><b>book! 📘 (July 23)</b></dt><dd> SAP UI Frameworks for Enterprise Developers -<br>a Practical Guide</li></dd>
+                </dl>
+			</section>
+			<section>
+				<h3>BPMN</h3>
+				<img src="img/pizza.png" alt="sample BPMN Pizza process (c) Camunda" width="90%"/>
+			</section>
+			<section data-background-iframe="https://consulting.camunda.com/dmn-simulator/"
+					 data-background-interactive>
+
+			</section>
+			<section>
+				<h3>DMN ⚡︎ BPMN</h3>
+				<img src="img/dmn-as-bpmn.png" alt="DMN impracticable in BPMN (c) Camunda" width="50%"/>
+			</section>
+			<section>
+				<h3>DMN in BPMN</h3>
+				<img src="img/dmn-in-bpmn.png" alt="DMN in BPMN (c) Camunda" />
+			</section>
+			<section>
+				<blockquote>talk is cheap,<br>show me the thing!</blockquote>
+			</section>
+			<section>
+				<h3>architecture</h3>
+				<img src="img/05_bdaas-arch.png" />
+			</section>
+			<section data-transition="fade">
+				<h3>architecture</h3>
+				<img src="img/10_bdaas-arch.png" />
+			</section>
+			<section data-transition="fade">
+				<h3>architecture</h3>
+				<img src="img/15_bdaas-arch.png" />
+			</section>
+			<section data-transition="fade">
+				<h3>architecture</h3>
+				<img src="img/20_bdaas-arch.png" />
+			</section>
+			<section data-transition="fade">
+				<h3>architecture</h3>
+				<img src="img/25_bdaas-arch.png" />
+			</section>
+			<section>
+				<h3>😀 👍</h3>
+				<ul class="no-bullets">
+					<li>🔗 real business processes (look, 'ma!)</li>
+					<li class="fragment">🧑‍💻🚫 change process, not code</li>
+					<li class="fragment">↔️↕️ scale-out + -up</li>
+					<li class="fragment">🤲 Open Source Camunda modules</li>
+					<li class="fragment">⚙️📑 re-use for docs</li>
+				</ul>
+			</section>
+			<section>
+				<h2 class="left">/me</h2>
+				<p>Development Architect @ <a href="https://www.js-soft.com">j&s-soft</a></p>
+				<p>SAP Mentor</p>
+                <dl>
+                    <dt><b>twitter</b></dt><dd><a href="https://www.twitter.com/vobu">@vobu</a></li></dd>
+                    <dt><b>mastodon</b></dt><dd><a href="https://saptodon.org/@vobu">@vobu@saptodon.org</a></li></dd>
+                    <dt><b>slack</b></dt><dd><a href="slack:vobu">vobu</a></li></dd>
+                    <dt><b>mail</b></dt><dd><a href="mailto:volker.buzek@js-soft.com">volker.buzek@js-soft.com</a></li></dd>
+                    <dt><b>book! 📘 (July 23)</b></dt><dd> SAP UI Frameworks for Enterprise Developers -<br>a Practical Guide</li></dd>
+                </dl>
+			</section>
+		</div>
+	</div>
+
+	<script src="../revealjs/dist/reveal.js"></script>
+	<script src="../revealjs/plugin/notes/notes.js"></script>
+	<script src="../revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../revealjs/plugin/highlight/highlight.js"></script>
+	<script src="../revealjs/plugin/zoom/zoom.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			controlsTutorial: false, // no bouncing
+
+			// Learn about reveal.js/plugins: https://revealjs.com/reveal.js/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
+		});
+	</script>
+</body>
+
+</html>
