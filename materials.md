@@ -7,9 +7,11 @@ sidebar_link: true
 
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
-- Jun 2023: "Mastering SAP", Melbourne: UI5 Masterclass
-  - 🖥 [Slides](/materials/msap-2023)
-  - ⌨️ [gh repo](https://github.com/vobu/ui5-aus)
+- Jun 2023: "Mastering SAP", Melbourne: 
+  - UI5 Masterclass
+    - 🖥 [Slides](/materials/msap-2023/index-masterclass.html)
+    - ⌨️ [gh repo](https://github.com/vobu/ui5-aus)
+  - 🖥 ["Process-driven software development on BTP w/ BPMN and DMN"](/materials/msap-2023/index-btp.html)
 - Jun 2023: 🖥 [sitBNE](/materials/sitBNE-2023) - SAP Inside Track Brisbane - "advanced UI5 thingies"
 - Oct 2022: [Devtoberfest 2022 had a focus topic on `wdi5`](https://developers.sap.com/tutorials/devtoberfest-week3-user-interface-wdi5.html). And I started that week with "Testing UI5 Apps with wdi5 - Zero to Hero to Continuous Integration"
   - 🎥 [YouTube recording](https://www.youtube.com/watch?v=f-0ztSnb2-c)
