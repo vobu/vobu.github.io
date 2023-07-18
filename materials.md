@@ -7,11 +7,14 @@ sidebar_link: true
 
 Here's a collection of materials for talks, presentation and lectures I gave. Not complete, but keeps piling up :)
 
+- Jul 2023: 👥 [Interview on re>≡CAP Hackathon for Azure Cosmos DB](https://www.youtube.com/watch?v=rtENmIqRNHI)
+- Jul 2023: 📘 da book!!! [SAP UI Frameworks for Enterprise Developers - A Practical Guide](https://link.springer.com/book/10.1007/978-1-4842-9535-9)
 - Jun 2023: "Mastering SAP", Melbourne: 
   - UI5 Masterclass
     - 🖥 [Slides](/materials/msap-2023/index-masterclass.html)
     - ⌨️ [gh repo](https://github.com/vobu/ui5-aus)
   - 🖥 ["Process-driven software development on BTP w/ BPMN and DMN"](/materials/msap-2023/index-btp.html)
+- Jun 2023: 👥 [Interview on wdi5 by Christian Bromann](https://www.youtube.com/watch?v=uz8B3Hu7_EY)
 - Jun 2023: 🖥 [sitBNE](/materials/sitBNE-2023) - SAP Inside Track Brisbane - "advanced UI5 thingies"
 - May 2023: golem.de article on SAP BUILD Apps: 🇩🇪 ["Ein Low-Code-Versprechen, das nicht gehalten wird"](https://www.golem.de/news/sap-build-apps-ein-low-code-versprechen-das-nicht-gehalten-wird-2305-173770.html)
 - Oct 2022: [Devtoberfest 2022 had a focus topic on `wdi5`](https://developers.sap.com/tutorials/devtoberfest-week3-user-interface-wdi5.html). And I started that week with "Testing UI5 Apps with wdi5 - Zero to Hero to Continuous Integration"
